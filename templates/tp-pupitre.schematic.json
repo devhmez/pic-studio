@@ -1,0 +1,271 @@
+{
+  "name": "TP2 — Pupitre de jeu",
+  "source": "TP -pupitre Séance3.docx (capture ISIS redessinée)",
+  "description": "VALIDER : BUTTON vers +5 V avec R1 10k vers la masse sur RA0 ; D4 LED-BLUE « GAME OVER » RA1, D2 LED-RED « NO » RA2, D3 LED-GREEN « YES » RA3 ; LOGICSTATE DEMARRER sur RA4 ; 8 LOGICSTATE (Q0..Q7) sur RB0..RB7.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": 0, "y": 0 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "VALIDER",
+      "kind": "BUTTON",
+      "ref": "VALIDER",
+      "at": { "x": 23, "y": 0 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR1",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 27, "y": -11 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R1",
+      "kind": "RES",
+      "ref": "R1",
+      "value": "10k",
+      "at": { "x": 20, "y": -4 },
+      "rotation": 270,
+      "props": {}
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 17, "y": -7 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "DEMARRER",
+      "kind": "LOGICSTATE",
+      "ref": "DEMARRER",
+      "at": { "x": 42, "y": 7 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS1",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 15 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS2",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 18 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS3",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 21 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS4",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 24 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS5",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 27 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS6",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 30 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS7",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 33 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS8",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 36 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "D3",
+      "kind": "LED",
+      "ref": "D3",
+      "value": "LED-GREEN",
+      "at": { "x": 48, "y": 7 },
+      "rotation": 0,
+      "props": {
+        "color": "GREEN"
+      }
+    },
+    {
+      "id": "D2",
+      "kind": "LED",
+      "ref": "D2",
+      "value": "LED-RED",
+      "at": { "x": 57, "y": 7 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "D4",
+      "kind": "LED",
+      "ref": "D4",
+      "value": "LED-BLUE",
+      "at": { "x": 66, "y": 7 },
+      "rotation": 0,
+      "props": {
+        "color": "BLUE"
+      }
+    },
+    {
+      "id": "GND2",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 57, "y": 13 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 15, "y": 0 }, { "x": 20.5, "y": 0 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 25.5, "y": 0 }, { "x": 27, "y": 0 }, { "x": 27, "y": -10 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 20, "y": -2 }, { "x": 20, "y": 0 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 20, "y": -7 }, { "x": 20, "y": -9 }, { "x": 17, "y": -9 }, { "x": 17, "y": -8 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 15, "y": 4 }, { "x": 38, "y": 4 }, { "x": 38, "y": 7 }, { "x": 40, "y": 7 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 15, "y": 6 }, { "x": 30, "y": 6 }, { "x": 30, "y": 15 }, { "x": 32, "y": 15 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 15, "y": 7 }, { "x": 29, "y": 7 }, { "x": 29, "y": 18 }, { "x": 32, "y": 18 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 15, "y": 8 }, { "x": 28, "y": 8 }, { "x": 28, "y": 21 }, { "x": 32, "y": 21 }]
+    },
+    {
+      "id": "W9",
+      "points": [{ "x": 15, "y": 9 }, { "x": 27, "y": 9 }, { "x": 27, "y": 24 }, { "x": 32, "y": 24 }]
+    },
+    {
+      "id": "W10",
+      "points": [{ "x": 15, "y": 10 }, { "x": 26, "y": 10 }, { "x": 26, "y": 27 }, { "x": 32, "y": 27 }]
+    },
+    {
+      "id": "W11",
+      "points": [{ "x": 15, "y": 11 }, { "x": 25, "y": 11 }, { "x": 25, "y": 30 }, { "x": 32, "y": 30 }]
+    },
+    {
+      "id": "W12",
+      "points": [{ "x": 15, "y": 12 }, { "x": 24, "y": 12 }, { "x": 24, "y": 33 }, { "x": 32, "y": 33 }]
+    },
+    {
+      "id": "W13",
+      "points": [{ "x": 15, "y": 13 }, { "x": 23, "y": 13 }, { "x": 23, "y": 36 }, { "x": 32, "y": 36 }]
+    },
+    {
+      "id": "W14",
+      "points": [{ "x": 15, "y": 3 }, { "x": 48, "y": 3 }, { "x": 48, "y": 5 }]
+    },
+    {
+      "id": "W15",
+      "points": [{ "x": 15, "y": 2 }, { "x": 57, "y": 2 }, { "x": 57, "y": 5 }]
+    },
+    {
+      "id": "W16",
+      "points": [{ "x": 15, "y": 1 }, { "x": 66, "y": 1 }, { "x": 66, "y": 5 }]
+    },
+    {
+      "id": "W17",
+      "points": [{ "x": 48, "y": 9 }, { "x": 48, "y": 11 }, { "x": 66, "y": 11 }, { "x": 66, "y": 9 }]
+    },
+    {
+      "id": "W18",
+      "points": [{ "x": 57, "y": 9 }, { "x": 57, "y": 11 }]
+    },
+    {
+      "id": "W19",
+      "points": [{ "x": 57, "y": 12 }, { "x": 57, "y": 11 }]
+    }
+  ]
+}

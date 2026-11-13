@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "title": "Ch6 — Interruption sur changement de RB4 à RB7",
+  "description": "Au démarrage puis à chaque changement d’un des interrupteurs RB4 à RB7, leur état est recopié sur les LEDs RA0 à RA3 (l’interruption RBIE s’en charge après le démarrage) ; la boucle principale n’a rien à faire.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": false,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "inter4",
+      "name": "INTER4",
+      "pin": "RB4",
+      "dir": "in",
+      "label": "Interrupteur RB4",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS1"
+    },
+    {
+      "id": "inter5",
+      "name": "INTER5",
+      "pin": "RB5",
+      "dir": "in",
+      "label": "Interrupteur RB5",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS2"
+    },
+    {
+      "id": "inter6",
+      "name": "INTER6",
+      "pin": "RB6",
+      "dir": "in",
+      "label": "Interrupteur RB6",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS3"
+    },
+    {
+      "id": "inter7",
+      "name": "INTER7",
+      "pin": "RB7",
+      "dir": "in",
+      "label": "Interrupteur RB7",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS4"
+    },
+    {
+      "id": "led0",
+      "name": "LED0",
+      "pin": "RA0",
+      "dir": "out",
+      "label": "Led RA0",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    },
+    {
+      "id": "led1",
+      "name": "LED1",
+      "pin": "RA1",
+      "dir": "out",
+      "label": "Led RA1",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D2"
+    },
+    {
+      "id": "led2",
+      "name": "LED2",
+      "pin": "RA2",
+      "dir": "out",
+      "label": "Led RA2",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D3"
+    },
+    {
+      "id": "led3",
+      "name": "LED3",
+      "pin": "RA3",
+      "dir": "out",
+      "label": "Led RA3",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D4"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [],
+  "interrupts": { "rbChange": true, "gie": true },
+  "init": [
+    {
+      "id": "s1",
+      "kind": "assign",
+      "target": { "kind": "signal", "id": "led0" },
+      "value": { "kind": "signal", "id": "inter4" },
+      "lead": "Afficher l'état des interrupteurs dès le démarrage"
+    },
+    {
+      "id": "s2",
+      "kind": "assign",
+      "target": { "kind": "signal", "id": "led1" },
+      "value": { "kind": "signal", "id": "inter5" }
+    },
+    {
+      "id": "s3",
+      "kind": "assign",
+      "target": { "kind": "signal", "id": "led2" },
+      "value": { "kind": "signal", "id": "inter6" }
+    },
+    {
+      "id": "s4",
+      "kind": "assign",
+      "target": { "kind": "signal", "id": "led3" },
+      "value": { "kind": "signal", "id": "inter7" }
+    }
+  ],
+  "loop": [{ "id": "s5", "kind": "comment", "text": "Attente des interruptions" }],
+  "functions": [
+    {
+      "id": "f1",
+      "name": "interrupt",
+      "kind": "interrupt",
+      "body": [
+        {
+          "id": "s6",
+          "kind": "if",
+          "branches": [
+            {
+              "id": "b1",
+              "cond": { "kind": "flag", "flag": "RBIF", "value": 1 },
+              "body": [
+                {
+                  "id": "s7",
+                  "kind": "assign",
+                  "target": { "kind": "signal", "id": "led0" },
+                  "value": { "kind": "signal", "id": "inter4" },
+                  "lead": "Recopier RB4..RB7 sur RA0..RA3 : la lecture de PORTB met fin à la condition de changement"
+                },
+                {
+                  "id": "s8",
+                  "kind": "assign",
+                  "target": { "kind": "signal", "id": "led1" },
+                  "value": { "kind": "signal", "id": "inter5" }
+                },
+                {
+                  "id": "s9",
+                  "kind": "assign",
+                  "target": { "kind": "signal", "id": "led2" },
+                  "value": { "kind": "signal", "id": "inter6" }
+                },
+                {
+                  "id": "s10",
+                  "kind": "assign",
+                  "target": { "kind": "signal", "id": "led3" },
+                  "value": { "kind": "signal", "id": "inter7" }
+                },
+                {
+                  "id": "s11",
+                  "kind": "clearFlag",
+                  "flag": "RBIF",
+                  "comment": "RBIF peut alors être effacé"
+                }
+              ],
+              "comment": "Changement d'état sur RB4 à RB7"
+            }
+          ],
+          "otherwise": null
+        }
+      ],
+      "lead": "Programme d'interruption : appelé à chaque changement de RB4 à RB7"
+    }
+  ]
+}

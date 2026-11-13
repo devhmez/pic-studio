@@ -1,0 +1,117 @@
+{
+  "name": "TP5 — Interruption externe RB0/INT",
+  "source": "Chapitre 5 (montage reconstitué dans le style des TP)",
+  "description": "BOUTON vers +5 V avec rappel 10k vers la masse sur RB0/INT ; D1 LED-RED sur RB1 (interruption), D2 LED-GREEN sur RB2 (clignotement) ; cathodes → GND. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": 0, "y": 0 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "D1",
+      "kind": "LED",
+      "ref": "D1",
+      "value": "LED-RED",
+      "at": { "x": 27, "y": 13 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "D2",
+      "kind": "LED",
+      "ref": "D2",
+      "value": "LED-GREEN",
+      "at": { "x": 19, "y": 13 },
+      "rotation": 0,
+      "props": {
+        "color": "GREEN"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 23, "y": 19 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "BOUTON",
+      "kind": "BUTTON",
+      "ref": "BOUTON",
+      "at": { "x": 37, "y": 6 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR1",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 41, "y": 0 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R1",
+      "kind": "RES",
+      "ref": "R1",
+      "value": "10k",
+      "at": { "x": 34, "y": 2 },
+      "rotation": 270,
+      "props": {}
+    },
+    {
+      "id": "GND2",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 31, "y": -3 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 15, "y": 7 }, { "x": 27, "y": 7 }, { "x": 27, "y": 11 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 15, "y": 8 }, { "x": 19, "y": 8 }, { "x": 19, "y": 11 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 19, "y": 15 }, { "x": 19, "y": 17 }, { "x": 27, "y": 17 }, { "x": 27, "y": 15 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 23, "y": 18 }, { "x": 23, "y": 17 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 15, "y": 6 }, { "x": 34.5, "y": 6 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 39.5, "y": 6 }, { "x": 41, "y": 6 }, { "x": 41, "y": 1 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 34, "y": 4 }, { "x": 34, "y": 6 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 34, "y": -1 }, { "x": 34, "y": -5 }, { "x": 31, "y": -5 }, { "x": 31, "y": -4 }]
+    }
+  ]
+}

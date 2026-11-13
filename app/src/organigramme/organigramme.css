@@ -1,0 +1,106 @@
+/* Organigramme panel: the chart sits on a white "sheet" over a calm neutral canvas (the chart keeps the course
+   colours in both themes, like a printed page). Tokens from ../styles.css; header controls from ../debug/chrome.css. */
+
+.org-panel { position: relative; }
+/* The header controls are portaled into the shell's panel header: style them by their own classes. */
+.org-seg button[aria-checked='true'],
+.org-pop .pcx-seg button[aria-checked='true'] { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0, 0, 0, .08); }
+
+/* ---------------------------------------------------------------- popovers (export, options) */
+
+.org-pop {
+  position: fixed; z-index: 45; min-width: 220px; max-width: min(320px, calc(100vw - 16px));
+  display: flex; flex-direction: column; gap: 2px; padding: 6px;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow);
+  animation: org-pop-in .1s ease-out;
+}
+@keyframes org-pop-in { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+.org-pop-title { margin: 6px 6px 2px; font-size: var(--fs-xs); font-weight: 600; color: var(--muted); }
+.org-pop-title:first-child { margin-top: 2px; }
+.org-menu-item {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3);
+  padding: 6px 8px; border: 0; border-radius: var(--radius); background: transparent; color: var(--text);
+  font-size: var(--fs-sm); text-align: left; cursor: pointer;
+}
+.org-menu-item:hover:not(:disabled), .org-menu-item:focus-visible { background: var(--surface-hover); outline: none; }
+.org-menu-item:disabled { color: var(--faint); cursor: default; }
+.org-menu-hint { color: var(--faint); font-size: var(--fs-xs); white-space: nowrap; }
+.org-options { display: flex; flex-direction: column; gap: 4px; padding: 2px; }
+.org-options .pcx-seg { margin: 0 4px 4px; align-self: flex-start; }
+
+/* ---------------------------------------------------------------- tabs and notes */
+
+.org-tabs {
+  display: flex; gap: 2px; padding: 6px var(--space-2) 0; flex: none; overflow-x: auto;
+  border-bottom: 1px solid var(--line); background: var(--surface);
+}
+.org-tab {
+  position: relative; padding: 5px 10px 7px; border: 0; background: transparent; color: var(--muted);
+  font-size: var(--fs-sm); white-space: nowrap; cursor: pointer; border-radius: var(--radius) var(--radius) 0 0;
+}
+.org-tab:hover { color: var(--text); background: var(--surface-hover); }
+.org-tab[aria-selected='true'] { color: var(--text); font-weight: 600; }
+.org-tab[aria-selected='true']::after { content: ''; position: absolute; left: 8px; right: 8px; bottom: -1px; height: 2px; border-radius: 2px; background: var(--accent); }
+.org-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.org-note {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px; flex: none;
+  padding: 6px var(--space-3); border-bottom: 1px solid var(--line);
+  background: var(--surface-2); color: var(--muted); font-size: var(--fs-xs);
+}
+.org-note svg { flex: none; color: var(--accent); }
+.org-note.is-warning { background: var(--warning-soft); color: var(--text); }
+.org-note.is-warning svg { color: var(--warning); }
+.org-link { padding: 0; border: 0; background: none; color: var(--accent); font-size: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.org-note-list { flex-basis: 100%; margin: 2px 0 0; padding-left: 20px; }
+
+/* ---------------------------------------------------------------- canvas */
+
+.org-viewport {
+  flex: 1; min-height: 0; overflow: auto; outline: none; position: relative;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--line-strong) 55%, transparent) 1px, transparent 1.2px) 0 0 / 18px 18px,
+    var(--surface-2);
+}
+.org-viewport:focus-visible { box-shadow: inset 0 0 0 2px var(--accent); }
+.org-viewport.is-empty { display: flex; background: var(--surface); }
+.org-canvas { position: relative; margin: 0 auto; }
+.org-stage {
+  position: absolute; left: 24px; top: 24px;
+  background: #fff; border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 6px 22px rgba(0, 0, 0, .08);
+  transition: filter .2s ease, opacity .2s ease;
+}
+.org-sheet, .org-sheet > svg { display: block; width: 100%; height: 100%; }
+.org-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.org-outline { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+.org-outline.is-selected { stroke: #2563eb; }
+.org-outline.is-exec { stroke: #f59e0b; stroke-dasharray: 6 3; }
+.org-stage [data-refs] { cursor: pointer; }
+.org-stage [data-refs]:hover > :first-child { filter: brightness(1.04) saturate(1.08); }
+.org-viewport.is-greyed .org-stage { filter: grayscale(1); opacity: .55; }
+
+/* ---------------------------------------------------------------- footer */
+
+.org-footer {
+  display: flex; align-items: center; gap: var(--space-2); flex: none; min-height: 30px;
+  padding: 0 var(--space-2) 0 var(--space-3); border-top: 1px solid var(--line); background: var(--surface);
+}
+.org-footer-text { flex: 1; min-width: 0; color: var(--muted); font-size: var(--fs-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.org-zoom { display: flex; align-items: center; gap: 1px; flex: none; }
+.org-zoom-value { min-width: 48px; justify-content: center; }
+
+/* ---------------------------------------------------------------- empty state */
+
+.org-empty-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); margin-top: var(--space-3); }
+.org-button {
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--text);
+  font-size: var(--fs-sm); cursor: pointer;
+}
+.org-button:hover { border-color: var(--line-strong); background: var(--surface-hover); }
+.org-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .org-pop, .org-stage { animation: none; transition: none; }
+}

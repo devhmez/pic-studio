@@ -1,0 +1,2695 @@
+{
+ "EXEMPLE1.DSN": {
+  "header": {
+   "created": "09/09/23",
+   "modified": "09/09/23",
+   "created_ts": "2023-09-09 13:36:45 UTC",
+   "modified_ts": "2023-09-09 13:52:29 UTC",
+   "word_0xA7": 709,
+   "word_0xA9": 750
+  },
+  "units": "grid units: 1 = 100 thou (0.1 inch) = 254000 internal units; Y axis up; angles CCW in degrees",
+  "components": [
+   {
+    "ref": "U1",
+    "device": "PIC16F84A",
+    "value": "PIC16F84A",
+    "origin": [
+     -8,
+     10
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PACKAGE": "DIL18",
+     "TRACE_DEFAULT": "1",
+     "PRIMITIVE": "DIGITAL,1684",
+     "MODDLL": "PIC16",
+     "MODDATA": "64,255",
+     "ITFMOD": "PIC",
+     "CODEGEN": "MPASMWIN",
+     "PROGRAM": "..\\..\\..\\..\\Users\\cy7ber\\Desktop\\testing\\ttt.hex",
+     "CLOCK": "1MHz",
+     "CFGWORD": "0x3FFB",
+     "DBG_RANDOM_PMEM": "0",
+     "DBG_RANDOM_DMEM": "0",
+     "DBG_STARTUP_DELAY": "0",
+     "DBG_WAKEUP_DELAY": "0",
+     "DBG_GENERATE_CLKOUT": "0",
+     "WDT_PERIOD": "18m",
+     "EPR_WRITEDATA_DELAY": "10m",
+     "PORTTDLH": "0",
+     "PORTTDHL": "0"
+    },
+    "pins": [
+     {
+      "name": "OSC1/CLKIN",
+      "num": "16",
+      "tip": [
+       -8,
+       10
+      ],
+      "net": 0
+     },
+     {
+      "name": "RB0/INT",
+      "num": "6",
+      "tip": [
+       7,
+       4
+      ],
+      "net": 1
+     },
+     {
+      "name": "RB1",
+      "num": "7",
+      "tip": [
+       7,
+       3
+      ],
+      "net": 2
+     },
+     {
+      "name": "RB2",
+      "num": "8",
+      "tip": [
+       7,
+       2
+      ],
+      "net": 3
+     },
+     {
+      "name": "RB3",
+      "num": "9",
+      "tip": [
+       7,
+       1
+      ],
+      "net": 4
+     },
+     {
+      "name": "RB4",
+      "num": "10",
+      "tip": [
+       7,
+       0
+      ],
+      "net": 5
+     },
+     {
+      "name": "RB5",
+      "num": "11",
+      "tip": [
+       7,
+       -1
+      ],
+      "net": 6
+     },
+     {
+      "name": "RB6",
+      "num": "12",
+      "tip": [
+       7,
+       -2
+      ],
+      "net": 7
+     },
+     {
+      "name": "RB7",
+      "num": "13",
+      "tip": [
+       7,
+       -3
+      ],
+      "net": 8
+     },
+     {
+      "name": "RA0",
+      "num": "17",
+      "tip": [
+       7,
+       10
+      ],
+      "net": 9
+     },
+     {
+      "name": "RA1",
+      "num": "18",
+      "tip": [
+       7,
+       9
+      ],
+      "net": 10
+     },
+     {
+      "name": "RA2",
+      "num": "1",
+      "tip": [
+       7,
+       8
+      ],
+      "net": 11
+     },
+     {
+      "name": "RA3",
+      "num": "2",
+      "tip": [
+       7,
+       7
+      ],
+      "net": 12
+     },
+     {
+      "name": "RA4/T0CKI",
+      "num": "3",
+      "tip": [
+       7,
+       6
+      ],
+      "net": 13
+     },
+     {
+      "name": "OSC2/CLKOUT",
+      "num": "15",
+      "tip": [
+       -8,
+       9
+      ],
+      "net": 14
+     },
+     {
+      "name": "$MCLR$",
+      "num": "4",
+      "tip": [
+       -8,
+       7
+      ],
+      "net": 15
+     },
+     {
+      "name": "VSS",
+      "num": "5",
+      "tip": [
+       -1,
+       -6
+      ],
+      "net": 16
+     },
+     {
+      "name": "VDD",
+      "num": "14",
+      "tip": [
+       -1,
+       13
+      ],
+      "net": 17
+     }
+    ],
+    "key": "U1"
+   },
+   {
+    "ref": "D1",
+    "device": "LED-BLUE",
+    "value": "LED-BLUE",
+    "origin": [
+     23,
+     7
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       23,
+       9
+      ],
+      "net": 9
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       23,
+       5
+      ],
+      "net": 18
+     }
+    ],
+    "key": "D1"
+   }
+  ],
+  "terminals": [
+   {
+    "kind": "$TERGROUND",
+    "label": "",
+    "origin": [
+     23,
+     2
+    ],
+    "angle": 0.0,
+    "node": [
+     23,
+     3
+    ]
+   }
+  ],
+  "wires": [
+   [
+    [
+     7,
+     10
+    ],
+    [
+     23,
+     10
+    ],
+    [
+     23,
+     9
+    ]
+   ],
+   [
+    [
+     23,
+     5
+    ],
+    [
+     23,
+     3
+    ]
+   ]
+  ],
+  "nets": [
+   [
+    "U1.RA0",
+    "D1.A"
+   ],
+   [
+    "D1.K",
+    "$TERGROUND"
+   ]
+  ],
+  "unconnected": [
+   "U1.OSC1/CLKIN",
+   "U1.RB0/INT",
+   "U1.RB1",
+   "U1.RB2",
+   "U1.RB3",
+   "U1.RB4",
+   "U1.RB5",
+   "U1.RB6",
+   "U1.RB7",
+   "U1.RA1",
+   "U1.RA2",
+   "U1.RA3",
+   "U1.RA4/T0CKI",
+   "U1.OSC2/CLKOUT",
+   "U1.$MCLR$",
+   "U1.VSS",
+   "U1.VDD"
+  ]
+ },
+ "EXEMPLE2.DSN": {
+  "header": {
+   "created": "09/09/23",
+   "modified": "09/09/23",
+   "created_ts": "2023-09-09 14:32:10 UTC",
+   "modified_ts": "2023-09-09 14:39:19 UTC",
+   "word_0xA7": 709,
+   "word_0xA9": 750
+  },
+  "units": "grid units: 1 = 100 thou (0.1 inch) = 254000 internal units; Y axis up; angles CCW in degrees",
+  "components": [
+   {
+    "ref": "U1",
+    "device": "PIC16F84A",
+    "value": "PIC16F84A",
+    "origin": [
+     -8,
+     8
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PACKAGE": "DIL18",
+     "TRACE_DEFAULT": "1",
+     "PRIMITIVE": "DIGITAL,1684",
+     "MODDLL": "PIC16",
+     "MODDATA": "64,255",
+     "ITFMOD": "PIC",
+     "CODEGEN": "MPASMWIN",
+     "PROGRAM": "..\\..\\..\\..\\Users\\cy7ber\\Desktop\\testing\\ttt.hex",
+     "CLOCK": "1MHz",
+     "CFGWORD": "0x3FFB",
+     "DBG_RANDOM_PMEM": "0",
+     "DBG_RANDOM_DMEM": "0",
+     "DBG_STARTUP_DELAY": "0",
+     "DBG_WAKEUP_DELAY": "0",
+     "DBG_GENERATE_CLKOUT": "0",
+     "WDT_PERIOD": "18m",
+     "EPR_WRITEDATA_DELAY": "10m",
+     "PORTTDLH": "0",
+     "PORTTDHL": "0"
+    },
+    "pins": [
+     {
+      "name": "OSC1/CLKIN",
+      "num": "16",
+      "tip": [
+       -8,
+       8
+      ],
+      "net": 0
+     },
+     {
+      "name": "RB0/INT",
+      "num": "6",
+      "tip": [
+       7,
+       2
+      ],
+      "net": 1
+     },
+     {
+      "name": "RB1",
+      "num": "7",
+      "tip": [
+       7,
+       1
+      ],
+      "net": 2
+     },
+     {
+      "name": "RB2",
+      "num": "8",
+      "tip": [
+       7,
+       0
+      ],
+      "net": 3
+     },
+     {
+      "name": "RB3",
+      "num": "9",
+      "tip": [
+       7,
+       -1
+      ],
+      "net": 4
+     },
+     {
+      "name": "RB4",
+      "num": "10",
+      "tip": [
+       7,
+       -2
+      ],
+      "net": 5
+     },
+     {
+      "name": "RB5",
+      "num": "11",
+      "tip": [
+       7,
+       -3
+      ],
+      "net": 6
+     },
+     {
+      "name": "RB6",
+      "num": "12",
+      "tip": [
+       7,
+       -4
+      ],
+      "net": 7
+     },
+     {
+      "name": "RB7",
+      "num": "13",
+      "tip": [
+       7,
+       -5
+      ],
+      "net": 8
+     },
+     {
+      "name": "RA0",
+      "num": "17",
+      "tip": [
+       7,
+       8
+      ],
+      "net": 9
+     },
+     {
+      "name": "RA1",
+      "num": "18",
+      "tip": [
+       7,
+       7
+      ],
+      "net": 10
+     },
+     {
+      "name": "RA2",
+      "num": "1",
+      "tip": [
+       7,
+       6
+      ],
+      "net": 11
+     },
+     {
+      "name": "RA3",
+      "num": "2",
+      "tip": [
+       7,
+       5
+      ],
+      "net": 12
+     },
+     {
+      "name": "RA4/T0CKI",
+      "num": "3",
+      "tip": [
+       7,
+       4
+      ],
+      "net": 13
+     },
+     {
+      "name": "OSC2/CLKOUT",
+      "num": "15",
+      "tip": [
+       -8,
+       7
+      ],
+      "net": 14
+     },
+     {
+      "name": "$MCLR$",
+      "num": "4",
+      "tip": [
+       -8,
+       5
+      ],
+      "net": 15
+     },
+     {
+      "name": "VSS",
+      "num": "5",
+      "tip": [
+       -1,
+       -8
+      ],
+      "net": 16
+     },
+     {
+      "name": "VDD",
+      "num": "14",
+      "tip": [
+       -1,
+       11
+      ],
+      "net": 17
+     }
+    ],
+    "key": "U1"
+   },
+   {
+    "ref": "D1",
+    "device": "LED-GREEN",
+    "value": "LED-GREEN",
+    "origin": [
+     26,
+     4
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       26,
+       6
+      ],
+      "net": 9
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       26,
+       2
+      ],
+      "net": 18
+     }
+    ],
+    "key": "D1"
+   },
+   {
+    "ref": "",
+    "device": "LOGICSTATE",
+    "value": "",
+    "origin": [
+     22,
+     2
+    ],
+    "angle": 0.0,
+    "mirror": 1,
+    "properties": {
+     "STATE": "1"
+    },
+    "pins": [
+     {
+      "name": "Q0",
+      "num": "",
+      "tip": [
+       20,
+       2
+      ],
+      "net": 1
+     }
+    ],
+    "key": "LOGICSTATE#1"
+   }
+  ],
+  "terminals": [
+   {
+    "kind": "$TERGROUND",
+    "label": "",
+    "origin": [
+     26,
+     -2
+    ],
+    "angle": 0.0,
+    "node": [
+     26,
+     -1
+    ]
+   }
+  ],
+  "wires": [
+   [
+    [
+     7,
+     8
+    ],
+    [
+     26,
+     8
+    ],
+    [
+     26,
+     6
+    ]
+   ],
+   [
+    [
+     26,
+     2
+    ],
+    [
+     26,
+     -1
+    ]
+   ],
+   [
+    [
+     7,
+     2
+    ],
+    [
+     20,
+     2
+    ]
+   ]
+  ],
+  "nets": [
+   [
+    "U1.RB0/INT",
+    "LOGICSTATE#1.Q0"
+   ],
+   [
+    "U1.RA0",
+    "D1.A"
+   ],
+   [
+    "D1.K",
+    "$TERGROUND"
+   ]
+  ],
+  "unconnected": [
+   "U1.OSC1/CLKIN",
+   "U1.RB1",
+   "U1.RB2",
+   "U1.RB3",
+   "U1.RB4",
+   "U1.RB5",
+   "U1.RB6",
+   "U1.RB7",
+   "U1.RA1",
+   "U1.RA2",
+   "U1.RA3",
+   "U1.RA4/T0CKI",
+   "U1.OSC2/CLKOUT",
+   "U1.$MCLR$",
+   "U1.VSS",
+   "U1.VDD"
+  ]
+ },
+ "manipulation status.DSN": {
+  "header": {
+   "created": "09/27/26",
+   "modified": "09/27/26",
+   "created_ts": "2026-09-27 17:43:49 UTC",
+   "modified_ts": "2026-09-27 18:23:49 UTC",
+   "word_0xA7": 709,
+   "word_0xA9": 750
+  },
+  "units": "grid units: 1 = 100 thou (0.1 inch) = 254000 internal units; Y axis up; angles CCW in degrees",
+  "components": [
+   {
+    "ref": "U1",
+    "device": "PIC16F84A",
+    "value": "PIC16F84A",
+    "origin": [
+     -13,
+     14
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "TRACE_DEFAULT": "1",
+     "PACKAGE": "DIL18",
+     "MODDLL": "PIC16",
+     "ITFMOD": "PIC",
+     "CLOCK": "1MHz",
+     "CODEGEN": "MPASMWIN",
+     "WDT_PERIOD": "18m",
+     "EPR_WRITEDATA_DELAY": "10m",
+     "PORTTDLH": "0",
+     "PORTTDHL": "0",
+     "DBG_GENERATE_CLKOUT": "0",
+     "DBG_STARTUP_DELAY": "0",
+     "DBG_WAKEUP_DELAY": "0",
+     "DBG_RANDOM_PMEM": "0",
+     "DBG_RANDOM_DMEM": "0",
+     "PRIMITIVE": "DIGITAL,1684",
+     "MODDATA": "64,255",
+     "CFGWORD": "0x3FFB"
+    },
+    "pins": [
+     {
+      "name": "OSC1/CLKIN",
+      "num": "16",
+      "tip": [
+       -13,
+       14
+      ],
+      "net": 0
+     },
+     {
+      "name": "RB0/INT",
+      "num": "6",
+      "tip": [
+       2,
+       8
+      ],
+      "net": 1
+     },
+     {
+      "name": "RB1",
+      "num": "7",
+      "tip": [
+       2,
+       7
+      ],
+      "net": 2
+     },
+     {
+      "name": "RB2",
+      "num": "8",
+      "tip": [
+       2,
+       6
+      ],
+      "net": 3
+     },
+     {
+      "name": "RB3",
+      "num": "9",
+      "tip": [
+       2,
+       5
+      ],
+      "net": 4
+     },
+     {
+      "name": "RB4",
+      "num": "10",
+      "tip": [
+       2,
+       4
+      ],
+      "net": 5
+     },
+     {
+      "name": "RB5",
+      "num": "11",
+      "tip": [
+       2,
+       3
+      ],
+      "net": 6
+     },
+     {
+      "name": "RB6",
+      "num": "12",
+      "tip": [
+       2,
+       2
+      ],
+      "net": 7
+     },
+     {
+      "name": "RB7",
+      "num": "13",
+      "tip": [
+       2,
+       1
+      ],
+      "net": 8
+     },
+     {
+      "name": "RA0",
+      "num": "17",
+      "tip": [
+       2,
+       14
+      ],
+      "net": 9
+     },
+     {
+      "name": "RA1",
+      "num": "18",
+      "tip": [
+       2,
+       13
+      ],
+      "net": 10
+     },
+     {
+      "name": "RA2",
+      "num": "1",
+      "tip": [
+       2,
+       12
+      ],
+      "net": 11
+     },
+     {
+      "name": "RA3",
+      "num": "2",
+      "tip": [
+       2,
+       11
+      ],
+      "net": 12
+     },
+     {
+      "name": "RA4/T0CKI",
+      "num": "3",
+      "tip": [
+       2,
+       10
+      ],
+      "net": 13
+     },
+     {
+      "name": "OSC2/CLKOUT",
+      "num": "15",
+      "tip": [
+       -13,
+       13
+      ],
+      "net": 14
+     },
+     {
+      "name": "$MCLR$",
+      "num": "4",
+      "tip": [
+       -13,
+       11
+      ],
+      "net": 15
+     },
+     {
+      "name": "VSS",
+      "num": "5",
+      "tip": [
+       -6,
+       -2
+      ],
+      "net": 16
+     },
+     {
+      "name": "VDD",
+      "num": "14",
+      "tip": [
+       -6,
+       17
+      ],
+      "net": 17
+     }
+    ],
+    "key": "U1"
+   },
+   {
+    "ref": "X_SUPERIEUR",
+    "device": "LED-BLUE",
+    "value": "LED-BLUE",
+    "origin": [
+     30,
+     2
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       30,
+       4
+      ],
+      "net": 1
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       30,
+       0
+      ],
+      "net": 18
+     }
+    ],
+    "key": "X_SUPERIEUR"
+   },
+   {
+    "ref": "EGALITE",
+    "device": "LED-GREEN",
+    "value": "LED-GREEN",
+    "origin": [
+     21,
+     2
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       21,
+       4
+      ],
+      "net": 2
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       21,
+       0
+      ],
+      "net": 18
+     }
+    ],
+    "key": "EGALITE"
+   },
+   {
+    "ref": "X_INFERIEUR",
+    "device": "LED-RED",
+    "value": "LED-RED",
+    "origin": [
+     9,
+     2
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1ms"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       9,
+       4
+      ],
+      "net": 3
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       9,
+       0
+      ],
+      "net": 18
+     }
+    ],
+    "key": "X_INFERIEUR"
+   }
+  ],
+  "terminals": [
+   {
+    "kind": "$TERGROUND",
+    "label": "",
+    "origin": [
+     21,
+     -7
+    ],
+    "angle": 0.0,
+    "node": [
+     21,
+     -6
+    ]
+   }
+  ],
+  "wires": [
+   [
+    [
+     2,
+     8
+    ],
+    [
+     30,
+     8
+    ],
+    [
+     30,
+     4
+    ]
+   ],
+   [
+    [
+     2,
+     7
+    ],
+    [
+     21,
+     7
+    ],
+    [
+     21,
+     4
+    ]
+   ],
+   [
+    [
+     2,
+     6
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     9,
+     4
+    ]
+   ],
+   [
+    [
+     9,
+     0
+    ],
+    [
+     9,
+     -5
+    ],
+    [
+     21,
+     -5
+    ]
+   ],
+   [
+    [
+     21,
+     -6
+    ],
+    [
+     21,
+     -5
+    ]
+   ],
+   [
+    [
+     21,
+     0
+    ],
+    [
+     21,
+     -5
+    ]
+   ],
+   [
+    [
+     30,
+     0
+    ],
+    [
+     30,
+     -5
+    ],
+    [
+     21,
+     -5
+    ]
+   ]
+  ],
+  "nets": [
+   [
+    "U1.RB0/INT",
+    "X_SUPERIEUR.A"
+   ],
+   [
+    "U1.RB1",
+    "EGALITE.A"
+   ],
+   [
+    "U1.RB2",
+    "X_INFERIEUR.A"
+   ],
+   [
+    "X_SUPERIEUR.K",
+    "EGALITE.K",
+    "X_INFERIEUR.K",
+    "$TERGROUND"
+   ]
+  ],
+  "unconnected": [
+   "U1.OSC1/CLKIN",
+   "U1.RB3",
+   "U1.RB4",
+   "U1.RB5",
+   "U1.RB6",
+   "U1.RB7",
+   "U1.RA0",
+   "U1.RA1",
+   "U1.RA2",
+   "U1.RA3",
+   "U1.RA4/T0CKI",
+   "U1.OSC2/CLKOUT",
+   "U1.$MCLR$",
+   "U1.VSS",
+   "U1.VDD"
+  ]
+ },
+ "tp demux.DSN": {
+  "header": {
+   "created": "09/16/24",
+   "modified": "02/05/26",
+   "created_ts": "2024-09-16 21:39:20 UTC",
+   "modified_ts": "2026-02-05 22:01:37 UTC",
+   "word_0xA7": 709,
+   "word_0xA9": 750
+  },
+  "units": "grid units: 1 = 100 thou (0.1 inch) = 254000 internal units; Y axis up; angles CCW in degrees",
+  "components": [
+   {
+    "ref": "U1",
+    "device": "PIC16F84A",
+    "value": "PIC16F84A",
+    "origin": [
+     -30,
+     20
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PACKAGE": "DIL18",
+     "PRIMITIVE": "DIGITAL,1684",
+     "MODDLL": "PIC16",
+     "MODDATA": "64,255",
+     "ITFMOD": "PIC",
+     "CODEGEN": "MPASMWIN",
+     "PROGRAM": "..\\..\\..\\Cours micro\\micro\\24-25\\3B9\\tp0\\tp0.hex",
+     "CLOCK": "1MHz",
+     "CFGWORD": "0x3FFB",
+     "DBG_RANDOM_PMEM": "0",
+     "DBG_RANDOM_DMEM": "0",
+     "DBG_STARTUP_DELAY": "0",
+     "DBG_WAKEUP_DELAY": "0",
+     "DBG_GENERATE_CLKOUT": "0",
+     "WDT_PERIOD": "18m",
+     "EPR_WRITEDATA_DELAY": "10m",
+     "PORTTDLH": "0",
+     "PORTTDHL": "0",
+     "TRACE_DEFAULT": "1"
+    },
+    "pins": [
+     {
+      "name": "OSC1/CLKIN",
+      "num": "16",
+      "tip": [
+       -30,
+       20
+      ],
+      "net": 0
+     },
+     {
+      "name": "RB0/INT",
+      "num": "6",
+      "tip": [
+       -15,
+       14
+      ],
+      "net": 1
+     },
+     {
+      "name": "RB1",
+      "num": "7",
+      "tip": [
+       -15,
+       13
+      ],
+      "net": 2
+     },
+     {
+      "name": "RB2",
+      "num": "8",
+      "tip": [
+       -15,
+       12
+      ],
+      "net": 3
+     },
+     {
+      "name": "RB3",
+      "num": "9",
+      "tip": [
+       -15,
+       11
+      ],
+      "net": 4
+     },
+     {
+      "name": "RB4",
+      "num": "10",
+      "tip": [
+       -15,
+       10
+      ],
+      "net": 5
+     },
+     {
+      "name": "RB5",
+      "num": "11",
+      "tip": [
+       -15,
+       9
+      ],
+      "net": 6
+     },
+     {
+      "name": "RB6",
+      "num": "12",
+      "tip": [
+       -15,
+       8
+      ],
+      "net": 7
+     },
+     {
+      "name": "RB7",
+      "num": "13",
+      "tip": [
+       -15,
+       7
+      ],
+      "net": 8
+     },
+     {
+      "name": "RA0",
+      "num": "17",
+      "tip": [
+       -15,
+       20
+      ],
+      "net": 9
+     },
+     {
+      "name": "RA1",
+      "num": "18",
+      "tip": [
+       -15,
+       19
+      ],
+      "net": 10
+     },
+     {
+      "name": "RA2",
+      "num": "1",
+      "tip": [
+       -15,
+       18
+      ],
+      "net": 11
+     },
+     {
+      "name": "RA3",
+      "num": "2",
+      "tip": [
+       -15,
+       17
+      ],
+      "net": 12
+     },
+     {
+      "name": "RA4/T0CKI",
+      "num": "3",
+      "tip": [
+       -15,
+       16
+      ],
+      "net": 13
+     },
+     {
+      "name": "OSC2/CLKOUT",
+      "num": "15",
+      "tip": [
+       -30,
+       19
+      ],
+      "net": 14
+     },
+     {
+      "name": "$MCLR$",
+      "num": "4",
+      "tip": [
+       -30,
+       17
+      ],
+      "net": 15
+     },
+     {
+      "name": "VSS",
+      "num": "5",
+      "tip": [
+       -23,
+       4
+      ],
+      "net": 16
+     },
+     {
+      "name": "VDD",
+      "num": "14",
+      "tip": [
+       -23,
+       23
+      ],
+      "net": 17
+     }
+    ],
+    "key": "U1"
+   },
+   {
+    "ref": "D1",
+    "device": "LED-BLUE",
+    "value": "LED-BLUE",
+    "origin": [
+     16,
+     -10
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       16,
+       -8
+      ],
+      "net": 18
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       16,
+       -12
+      ],
+      "net": 19
+     }
+    ],
+    "key": "D1"
+   },
+   {
+    "ref": "D2",
+    "device": "LED-GREEN",
+    "value": "LED-GREEN",
+    "origin": [
+     9,
+     -10
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       9,
+       -8
+      ],
+      "net": 20
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       9,
+       -12
+      ],
+      "net": 19
+     }
+    ],
+    "key": "D2"
+   },
+   {
+    "ref": "D3",
+    "device": "LED-RED",
+    "value": "LED-RED",
+    "origin": [
+     1,
+     -10
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1ms"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       1,
+       -8
+      ],
+      "net": 21
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       1,
+       -12
+      ],
+      "net": 19
+     }
+    ],
+    "key": "D3"
+   },
+   {
+    "ref": "D4",
+    "device": "LED-YELLOW",
+    "value": "LED-YELLOW",
+    "origin": [
+     -10,
+     -10
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "MODFILE": "LEDA",
+     "VF": "2.2V",
+     "IMAX": "10mA",
+     "BV": "4V",
+     "RS": "3",
+     "ROFF": "100k",
+     "TLITMIN": "0.1m"
+    },
+    "pins": [
+     {
+      "name": "A",
+      "num": "",
+      "tip": [
+       -10,
+       -8
+      ],
+      "net": 22
+     },
+     {
+      "name": "K",
+      "num": "",
+      "tip": [
+       -10,
+       -12
+      ],
+      "net": 19
+     }
+    ],
+    "key": "D4"
+   },
+   {
+    "ref": "R1",
+    "device": "RES",
+    "value": "220",
+    "origin": [
+     -10,
+     -1
+    ],
+    "angle": -90.0,
+    "mirror": 0,
+    "properties": {
+     "PRIMITIVE": "ANALOG",
+     "PRIMTYPE": "RESISTOR",
+     "PACKAGE": "RES40"
+    },
+    "pins": [
+     {
+      "name": "1",
+      "num": "",
+      "tip": [
+       -10,
+       1
+      ],
+      "net": 4
+     },
+     {
+      "name": "2",
+      "num": "",
+      "tip": [
+       -10,
+       -4
+      ],
+      "net": 22
+     }
+    ],
+    "key": "R1"
+   },
+   {
+    "ref": "R2",
+    "device": "RES",
+    "value": "220",
+    "origin": [
+     -4,
+     3
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PRIMITIVE": "ANALOG",
+     "PRIMTYPE": "RESISTOR",
+     "PACKAGE": "RES40"
+    },
+    "pins": [
+     {
+      "name": "1",
+      "num": "",
+      "tip": [
+       -6,
+       3
+      ],
+      "net": 3
+     },
+     {
+      "name": "2",
+      "num": "",
+      "tip": [
+       -1,
+       3
+      ],
+      "net": 21
+     }
+    ],
+    "key": "R2"
+   },
+   {
+    "ref": "R3",
+    "device": "RES",
+    "value": "220",
+    "origin": [
+     -4,
+     6
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PRIMITIVE": "ANALOG",
+     "PRIMTYPE": "RESISTOR",
+     "PACKAGE": "RES40"
+    },
+    "pins": [
+     {
+      "name": "1",
+      "num": "",
+      "tip": [
+       -6,
+       6
+      ],
+      "net": 2
+     },
+     {
+      "name": "2",
+      "num": "",
+      "tip": [
+       -1,
+       6
+      ],
+      "net": 20
+     }
+    ],
+    "key": "R3"
+   },
+   {
+    "ref": "R4",
+    "device": "RES",
+    "value": "220",
+    "origin": [
+     -3,
+     9
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PRIMITIVE": "ANALOG",
+     "PRIMTYPE": "RESISTOR",
+     "PACKAGE": "RES40"
+    },
+    "pins": [
+     {
+      "name": "1",
+      "num": "",
+      "tip": [
+       -5,
+       9
+      ],
+      "net": 1
+     },
+     {
+      "name": "2",
+      "num": "",
+      "tip": [
+       0,
+       9
+      ],
+      "net": 18
+     }
+    ],
+    "key": "R4"
+   },
+   {
+    "ref": "",
+    "device": "LOGICSTATE",
+    "value": "",
+    "origin": [
+     13,
+     27
+    ],
+    "angle": 180.0,
+    "mirror": 0,
+    "properties": {
+     "STATE": "0"
+    },
+    "pins": [
+     {
+      "name": "Q0",
+      "num": "",
+      "tip": [
+       11,
+       27
+      ],
+      "net": 9
+     }
+    ],
+    "key": "LOGICSTATE#1"
+   },
+   {
+    "ref": "",
+    "device": "LOGICSTATE",
+    "value": "",
+    "origin": [
+     17,
+     23
+    ],
+    "angle": -180.0,
+    "mirror": 0,
+    "properties": {
+     "STATE": "1"
+    },
+    "pins": [
+     {
+      "name": "Q0",
+      "num": "",
+      "tip": [
+       15,
+       23
+      ],
+      "net": 10
+     }
+    ],
+    "key": "LOGICSTATE#2"
+   }
+  ],
+  "terminals": [
+   {
+    "kind": "$TERGROUND",
+    "label": "",
+    "origin": [
+     2,
+     -19
+    ],
+    "angle": 0.0,
+    "node": [
+     2,
+     -18
+    ]
+   }
+  ],
+  "wires": [
+   [
+    [
+     -15,
+     11
+    ],
+    [
+     -14,
+     11
+    ],
+    [
+     -14,
+     2
+    ],
+    [
+     -10,
+     2
+    ],
+    [
+     -10,
+     1
+    ]
+   ],
+   [
+    [
+     -10,
+     -8
+    ],
+    [
+     -10,
+     -4
+    ]
+   ],
+   [
+    [
+     -15,
+     12
+    ],
+    [
+     -13,
+     12
+    ],
+    [
+     -13,
+     3
+    ],
+    [
+     -6,
+     3
+    ]
+   ],
+   [
+    [
+     1,
+     -8
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     3
+    ]
+   ],
+   [
+    [
+     -15,
+     13
+    ],
+    [
+     -12,
+     13
+    ],
+    [
+     -12,
+     6
+    ],
+    [
+     -6,
+     6
+    ]
+   ],
+   [
+    [
+     9,
+     -8
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     -1,
+     6
+    ]
+   ],
+   [
+    [
+     -15,
+     14
+    ],
+    [
+     -11,
+     14
+    ],
+    [
+     -11,
+     9
+    ],
+    [
+     -5,
+     9
+    ]
+   ],
+   [
+    [
+     16,
+     -8
+    ],
+    [
+     16,
+     9
+    ],
+    [
+     0,
+     9
+    ]
+   ],
+   [
+    [
+     -15,
+     20
+    ],
+    [
+     -14,
+     20
+    ],
+    [
+     -14,
+     27
+    ],
+    [
+     11,
+     27
+    ]
+   ],
+   [
+    [
+     -15,
+     19
+    ],
+    [
+     -13,
+     19
+    ],
+    [
+     -13,
+     23
+    ],
+    [
+     15,
+     23
+    ]
+   ],
+   [
+    [
+     16,
+     -12
+    ],
+    [
+     16,
+     -14
+    ],
+    [
+     9,
+     -14
+    ]
+   ],
+   [
+    [
+     9,
+     -12
+    ],
+    [
+     9,
+     -14
+    ]
+   ],
+   [
+    [
+     -10,
+     -12
+    ],
+    [
+     -10,
+     -14
+    ],
+    [
+     1,
+     -14
+    ]
+   ],
+   [
+    [
+     1,
+     -12
+    ],
+    [
+     1,
+     -14
+    ]
+   ],
+   [
+    [
+     1,
+     -14
+    ],
+    [
+     2,
+     -14
+    ]
+   ],
+   [
+    [
+     9,
+     -14
+    ],
+    [
+     2,
+     -14
+    ]
+   ],
+   [
+    [
+     2,
+     -18
+    ],
+    [
+     2,
+     -14
+    ]
+   ]
+  ],
+  "nets": [
+   [
+    "U1.RB0/INT",
+    "R4.1"
+   ],
+   [
+    "U1.RB1",
+    "R3.1"
+   ],
+   [
+    "U1.RB2",
+    "R2.1"
+   ],
+   [
+    "U1.RB3",
+    "R1.1"
+   ],
+   [
+    "U1.RA0",
+    "LOGICSTATE#1.Q0"
+   ],
+   [
+    "U1.RA1",
+    "LOGICSTATE#2.Q0"
+   ],
+   [
+    "D1.A",
+    "R4.2"
+   ],
+   [
+    "D1.K",
+    "D2.K",
+    "D3.K",
+    "D4.K",
+    "$TERGROUND"
+   ],
+   [
+    "D2.A",
+    "R3.2"
+   ],
+   [
+    "D3.A",
+    "R2.2"
+   ],
+   [
+    "D4.A",
+    "R1.2"
+   ]
+  ],
+  "unconnected": [
+   "U1.OSC1/CLKIN",
+   "U1.RB4",
+   "U1.RB5",
+   "U1.RB6",
+   "U1.RB7",
+   "U1.RA2",
+   "U1.RA3",
+   "U1.RA4/T0CKI",
+   "U1.OSC2/CLKOUT",
+   "U1.$MCLR$",
+   "U1.VSS",
+   "U1.VDD"
+  ]
+ },
+ "traffic lightdesign.DSN": {
+  "header": {
+   "created": "09/28/25",
+   "modified": "02/19/26",
+   "created_ts": "2025-09-29 02:58:31 UTC",
+   "modified_ts": "2026-02-19 17:01:25 UTC",
+   "word_0xA7": 709,
+   "word_0xA9": 750
+  },
+  "units": "grid units: 1 = 100 thou (0.1 inch) = 254000 internal units; Y axis up; angles CCW in degrees",
+  "components": [
+   {
+    "ref": "U1",
+    "device": "PIC16F84A",
+    "value": "PIC16F84A",
+    "origin": [
+     -13,
+     14
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "PACKAGE": "DIL18",
+     "PRIMITIVE": "DIGITAL,1684",
+     "MODDLL": "PIC16",
+     "MODDATA": "64,255",
+     "ITFMOD": "PIC",
+     "CODEGEN": "MPASMWIN",
+     "PROGRAM": "..\\..\\..\\Cours micro\\micro\\24-25\\3B9\\tp0\\tp0.hex",
+     "CLOCK": "8MHz",
+     "CFGWORD": "0x3FFB",
+     "DBG_RANDOM_PMEM": "0",
+     "DBG_RANDOM_DMEM": "0",
+     "DBG_STARTUP_DELAY": "0",
+     "DBG_WAKEUP_DELAY": "0",
+     "DBG_GENERATE_CLKOUT": "0",
+     "WDT_PERIOD": "18m",
+     "EPR_WRITEDATA_DELAY": "10m",
+     "PORTTDLH": "0",
+     "PORTTDHL": "0",
+     "TRACE_DEFAULT": "1"
+    },
+    "pins": [
+     {
+      "name": "OSC1/CLKIN",
+      "num": "16",
+      "tip": [
+       -13,
+       14
+      ],
+      "net": 0
+     },
+     {
+      "name": "RB0/INT",
+      "num": "6",
+      "tip": [
+       2,
+       8
+      ],
+      "net": 1
+     },
+     {
+      "name": "RB1",
+      "num": "7",
+      "tip": [
+       2,
+       7
+      ],
+      "net": 2
+     },
+     {
+      "name": "RB2",
+      "num": "8",
+      "tip": [
+       2,
+       6
+      ],
+      "net": 3
+     },
+     {
+      "name": "RB3",
+      "num": "9",
+      "tip": [
+       2,
+       5
+      ],
+      "net": 4
+     },
+     {
+      "name": "RB4",
+      "num": "10",
+      "tip": [
+       2,
+       4
+      ],
+      "net": 5
+     },
+     {
+      "name": "RB5",
+      "num": "11",
+      "tip": [
+       2,
+       3
+      ],
+      "net": 6
+     },
+     {
+      "name": "RB6",
+      "num": "12",
+      "tip": [
+       2,
+       2
+      ],
+      "net": 7
+     },
+     {
+      "name": "RB7",
+      "num": "13",
+      "tip": [
+       2,
+       1
+      ],
+      "net": 8
+     },
+     {
+      "name": "RA0",
+      "num": "17",
+      "tip": [
+       2,
+       14
+      ],
+      "net": 9
+     },
+     {
+      "name": "RA1",
+      "num": "18",
+      "tip": [
+       2,
+       13
+      ],
+      "net": 10
+     },
+     {
+      "name": "RA2",
+      "num": "1",
+      "tip": [
+       2,
+       12
+      ],
+      "net": 11
+     },
+     {
+      "name": "RA3",
+      "num": "2",
+      "tip": [
+       2,
+       11
+      ],
+      "net": 12
+     },
+     {
+      "name": "RA4/T0CKI",
+      "num": "3",
+      "tip": [
+       2,
+       10
+      ],
+      "net": 13
+     },
+     {
+      "name": "OSC2/CLKOUT",
+      "num": "15",
+      "tip": [
+       -13,
+       13
+      ],
+      "net": 14
+     },
+     {
+      "name": "$MCLR$",
+      "num": "4",
+      "tip": [
+       -13,
+       11
+      ],
+      "net": 15
+     },
+     {
+      "name": "VSS",
+      "num": "5",
+      "tip": [
+       -6,
+       -2
+      ],
+      "net": 16
+     },
+     {
+      "name": "VDD",
+      "num": "14",
+      "tip": [
+       -6,
+       17
+      ],
+      "net": 17
+     }
+    ],
+    "key": "U1"
+   },
+   {
+    "ref": "",
+    "device": "7SEG-BCD-BLUE",
+    "value": "",
+    "origin": [
+     16,
+     25
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {},
+    "pins": [
+     {
+      "name": "D3",
+      "num": "",
+      "tip": [
+       17,
+       14.5
+      ],
+      "net": 4
+     },
+     {
+      "name": "D2",
+      "num": "",
+      "tip": [
+       18.5,
+       14.5
+      ],
+      "net": 3
+     },
+     {
+      "name": "D1",
+      "num": "",
+      "tip": [
+       20,
+       14.5
+      ],
+      "net": 2
+     },
+     {
+      "name": "D0",
+      "num": "",
+      "tip": [
+       21.5,
+       14.5
+      ],
+      "net": 1
+     }
+    ],
+    "key": "7SEG-BCD-BLUE#1"
+   },
+   {
+    "ref": "LDR1",
+    "device": "TORCH_LDR",
+    "value": "TORCH_LDR",
+    "origin": [
+     -25,
+     5
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {
+     "STATE": "0",
+     "PRIMITIVE": "ANALOG,RTSWITCH",
+     "R(0)": "1M",
+     "R(1)": "200K",
+     "R(2)": "100K",
+     "R(3)": "50K",
+     "R(4)": "20K",
+     "R(5)": "10K",
+     "R(6)": "5K",
+     "R(7)": "2K",
+     "R(8)": "1K",
+     "R(9)": "500",
+     "PACKAGE": "LDR"
+    },
+    "pins": [
+     {
+      "name": "1",
+      "num": "",
+      "tip": [
+       -23,
+       8
+      ],
+      "net": 18
+     },
+     {
+      "name": "2",
+      "num": "",
+      "tip": [
+       -23,
+       2
+      ],
+      "net": 12
+     }
+    ],
+    "key": "LDR1"
+   },
+   {
+    "ref": "R1",
+    "device": "RES",
+    "value": "1k",
+    "origin": [
+     -23,
+     -9
+    ],
+    "angle": -90.0,
+    "mirror": 0,
+    "properties": {
+     "PRIMITIVE": "ANALOG",
+     "PRIMTYPE": "RESISTOR",
+     "PACKAGE": "RES40"
+    },
+    "pins": [
+     {
+      "name": "1",
+      "num": "",
+      "tip": [
+       -23,
+       -7
+      ],
+      "net": 12
+     },
+     {
+      "name": "2",
+      "num": "",
+      "tip": [
+       -23,
+       -12
+      ],
+      "net": 19
+     }
+    ],
+    "key": "R1"
+   },
+   {
+    "ref": "",
+    "device": "TRAFFIC LIGHTS",
+    "value": "",
+    "origin": [
+     13,
+     20
+    ],
+    "angle": 0.0,
+    "mirror": 0,
+    "properties": {},
+    "pins": [
+     {
+      "name": "D0",
+      "num": "",
+      "tip": [
+       9,
+       23
+      ],
+      "net": 9
+     },
+     {
+      "name": "D1",
+      "num": "",
+      "tip": [
+       9,
+       20
+      ],
+      "net": 10
+     },
+     {
+      "name": "D2",
+      "num": "",
+      "tip": [
+       9,
+       17
+      ],
+      "net": 11
+     }
+    ],
+    "key": "TRAFFIC LIGHTS#1"
+   }
+  ],
+  "terminals": [
+   {
+    "kind": "$TERGROUND",
+    "label": "",
+    "origin": [
+     -23,
+     -20
+    ],
+    "angle": 0.0,
+    "node": [
+     -23,
+     -19
+    ]
+   },
+   {
+    "kind": "$TERPOWER",
+    "label": "",
+    "origin": [
+     -23,
+     17
+    ],
+    "angle": 0.0,
+    "node": [
+     -23,
+     16
+    ]
+   }
+  ],
+  "wires": [
+   [
+    [
+     2,
+     5
+    ],
+    [
+     17,
+     5
+    ],
+    [
+     17,
+     14.5
+    ]
+   ],
+   [
+    [
+     2,
+     6
+    ],
+    [
+     18.5,
+     6
+    ],
+    [
+     18.5,
+     14.5
+    ]
+   ],
+   [
+    [
+     2,
+     7
+    ],
+    [
+     20,
+     7
+    ],
+    [
+     20,
+     14.5
+    ]
+   ],
+   [
+    [
+     2,
+     8
+    ],
+    [
+     21.5,
+     8
+    ],
+    [
+     21.5,
+     14.5
+    ]
+   ],
+   [
+    [
+     2,
+     14
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     6,
+     23
+    ],
+    [
+     9,
+     23
+    ]
+   ],
+   [
+    [
+     2,
+     13
+    ],
+    [
+     7,
+     13
+    ],
+    [
+     7,
+     20
+    ],
+    [
+     9,
+     20
+    ]
+   ],
+   [
+    [
+     2,
+     12
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     9,
+     17
+    ]
+   ],
+   [
+    [
+     2,
+     11
+    ],
+    [
+     3,
+     11
+    ],
+    [
+     3,
+     -5
+    ],
+    [
+     -23,
+     -5
+    ]
+   ],
+   [
+    [
+     -23,
+     2
+    ],
+    [
+     -23,
+     -5
+    ]
+   ],
+   [
+    [
+     -23,
+     -7
+    ],
+    [
+     -23,
+     -5
+    ]
+   ],
+   [
+    [
+     -23,
+     -12
+    ],
+    [
+     -23,
+     -19
+    ]
+   ],
+   [
+    [
+     -23,
+     8
+    ],
+    [
+     -23,
+     16
+    ]
+   ]
+  ],
+  "nets": [
+   [
+    "U1.RB0/INT",
+    "7SEG-BCD-BLUE#1.D0"
+   ],
+   [
+    "U1.RB1",
+    "7SEG-BCD-BLUE#1.D1"
+   ],
+   [
+    "U1.RB2",
+    "7SEG-BCD-BLUE#1.D2"
+   ],
+   [
+    "U1.RB3",
+    "7SEG-BCD-BLUE#1.D3"
+   ],
+   [
+    "U1.RA0",
+    "TRAFFIC LIGHTS#1.D0"
+   ],
+   [
+    "U1.RA1",
+    "TRAFFIC LIGHTS#1.D1"
+   ],
+   [
+    "U1.RA2",
+    "TRAFFIC LIGHTS#1.D2"
+   ],
+   [
+    "U1.RA3",
+    "LDR1.2",
+    "R1.1"
+   ],
+   [
+    "LDR1.1",
+    "$TERPOWER"
+   ],
+   [
+    "R1.2",
+    "$TERGROUND"
+   ]
+  ],
+  "unconnected": [
+   "U1.OSC1/CLKIN",
+   "U1.RB4",
+   "U1.RB5",
+   "U1.RB6",
+   "U1.RB7",
+   "U1.RA4/T0CKI",
+   "U1.OSC2/CLKOUT",
+   "U1.$MCLR$",
+   "U1.VSS",
+   "U1.VDD"
+  ]
+ }
+}

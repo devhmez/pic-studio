@@ -1,0 +1,34 @@
+{
+  "name": "pic-studio",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "app"
+  ],
+  "scripts": {
+    "dev": "npm -w app run dev",
+    "build": "npm -w app run build",
+    "app:dev": "node scripts/dev-electron.mjs",
+    "app:build": "npm run build && node scripts/build-electron.mjs",
+    "app:icon": "node scripts/build-icon.mjs",
+    "package": "npm run app:build && node scripts/package-app.mjs",
+    "app:smoke": "node scripts/smoke-app.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p electron/tsconfig.json",
+    "bench": "BENCH=1 vitest run packages/emulator/test/bench.test.ts packages/integration/test/speed.test.ts"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^44.7.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
+  }
+}

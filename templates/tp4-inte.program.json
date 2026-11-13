@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "title": "TP4 — Interruption INTE",
+  "description": "Le compteur affiche 0 à 9 sur l’afficheur 7 segments BCD (RA0 à RA3), un chiffre toutes les 500 ms. Chaque appui sur le bouton (RB0/INT, front montant) déclenche l’interruption : la LED rouge (RB3) clignote 3 fois, puis le compteur reprend exactement où il s’était arrêté.",
+  "clockHz": 8000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": true,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "bouton",
+      "name": "BOUTON",
+      "pin": "RB0",
+      "dir": "in",
+      "label": "Bouton",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "BTN1"
+    },
+    {
+      "id": "led",
+      "name": "LED",
+      "pin": "RB3",
+      "dir": "out",
+      "label": "Led rouge",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    }
+  ],
+  "buses": [
+    {
+      "id": "afficheur",
+      "name": "AFFICHEUR",
+      "port": "A",
+      "lsb": 0,
+      "width": 4,
+      "dir": "out",
+      "label": "Afficheur 7 segments BCD",
+      "device": "bcd",
+      "componentId": "SEG1"
+    }
+  ],
+  "constants": [],
+  "variables": [{ "name": "j", "type": "unsigned char" }, { "name": "i", "type": "unsigned char" }],
+  "interrupts": { "int": { "edge": "rising" }, "gie": true },
+  "init": [
+    { "id": "s1", "kind": "set", "signal": "led", "value": 0 },
+    {
+      "id": "s2",
+      "kind": "display",
+      "bus": "afficheur",
+      "value": { "kind": "num", "value": 0, "radix": 16 }
+    }
+  ],
+  "loop": [
+    {
+      "id": "s3",
+      "kind": "repeat",
+      "times": 10,
+      "counter": "i",
+      "body": [
+        {
+          "id": "s4",
+          "kind": "display",
+          "bus": "afficheur",
+          "value": { "kind": "var", "name": "i" }
+        },
+        { "id": "s5", "kind": "delay", "ms": 500 }
+      ],
+      "lead": "Compteur de 0 à 9 : le programme principal ne lit jamais le bouton"
+    }
+  ],
+  "functions": [
+    {
+      "id": "f1",
+      "name": "interrupt",
+      "kind": "interrupt",
+      "body": [
+        {
+          "id": "s6",
+          "kind": "if",
+          "branches": [
+            {
+              "id": "b1",
+              "cond": { "kind": "flag", "flag": "INTF", "value": 1 },
+              "body": [
+                {
+                  "id": "s7",
+                  "kind": "repeat",
+                  "times": 3,
+                  "counter": "j",
+                  "body": [
+                    { "id": "s8", "kind": "set", "signal": "led", "value": 1 },
+                    { "id": "s9", "kind": "delay", "ms": 500 },
+                    { "id": "s10", "kind": "set", "signal": "led", "value": 0 },
+                    { "id": "s11", "kind": "delay", "ms": 500 }
+                  ],
+                  "lead": "La LED rouge clignote 3 fois"
+                },
+                {
+                  "id": "s12",
+                  "kind": "clearFlag",
+                  "flag": "INTF",
+                  "comment": "Remettre le drapeau à zéro"
+                }
+              ],
+              "comment": "Interruption RB0/INT : appui sur le bouton"
+            }
+          ],
+          "otherwise": null
+        }
+      ],
+      "lead": "Programme d'interruption : appelé à chaque appui sur le bouton (front montant sur RB0/INT)"
+    }
+  ]
+}

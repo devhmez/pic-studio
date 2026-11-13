@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="272" height="211" viewBox="0 0 272 211" role="img" aria-label="Organigramme">
+<title>Organigramme</title>
+<defs><marker id="org-arrow" viewBox="0 0 8 7" refX="4" refY="3.5" markerWidth="8" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#000000"/></marker></defs>
+<rect x="0" y="0" width="272" height="211" fill="#FFFFFF"/>
+<g data-node="start"><circle cx="136" cy="25.5" r="4.5" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/><text x="147.5" y="29.35" text-anchor="start" font-family="Georgia, 'Times New Roman', Times, serif" font-size="11" fill="#000000">Début</text></g>
+<g data-node="config"><rect x="20" y="50" width="232" height="42" fill="#FFD966" stroke="#FFC000" stroke-width="1.25"/><text x="136" y="67.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-size="12" font-weight="bold" fill="#000000">CONFIGURATION</text><text x="136" y="82.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-size="12" fill="#000000">RA0 est une sortie</text></g>
+<g data-node="init" data-refs="s1"><rect x="20" y="112" width="232" height="42" fill="#F9B57E" stroke="#E26C09" stroke-width="1.25"/><text x="136" y="129.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-size="12" font-weight="bold" fill="#000000">INITIALISATION</text><text x="136" y="144.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-size="12" fill="#000000">Led bleue allumée</text></g>
+<g data-node="end"><circle cx="136" cy="182" r="7.5" fill="#FFFFFF" stroke="#000000" stroke-width="1"/><circle cx="136" cy="182" r="5.5" fill="#000000"/><text x="151" y="185.85" text-anchor="start" font-family="Georgia, 'Times New Roman', Times, serif" font-size="11" fill="#000000">Fin</text></g>
+<path data-edge="e1" d="M136,30 L136,46" fill="none" stroke="#000000" stroke-width="1" stroke-linejoin="miter" marker-end="url(#org-arrow)"/>
+<path data-edge="e2" d="M136,92 L136,108" fill="none" stroke="#000000" stroke-width="1" stroke-linejoin="miter" marker-end="url(#org-arrow)"/>
+<path data-edge="e3" d="M136,154 L136,170" fill="none" stroke="#000000" stroke-width="1" stroke-linejoin="miter" marker-end="url(#org-arrow)"/>
+</svg>

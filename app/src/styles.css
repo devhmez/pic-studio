@@ -1,0 +1,62 @@
+/* Design tokens shared by every panel. Panels use these variables, never raw colours (except the
+   schematic canvas, which follows the ISIS palette exported by @pic/circuit). */
+:root {
+  --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  --fs-xs: 11px; --fs-sm: 12px; --fs-md: 13px; --fs-lg: 15px;
+  --radius: 6px; --radius-lg: 10px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+
+  --bg: #f3f3f0;
+  --surface: #ffffff;
+  --surface-2: #f8f8f6;
+  --surface-hover: #efefeb;
+  --line: #e0dfda;
+  --line-strong: #c9c8c1;
+  --text: #1c1c1a;
+  --muted: #6d6c66;
+  --faint: #9a9993;
+  --accent: #0f766e;
+  --accent-soft: #d7efec;
+  --accent-text: #ffffff;
+  --danger: #c2410c;
+  --danger-soft: #fde8dc;
+  --warning: #a16207;
+  --warning-soft: #fdf3d3;
+  --success: #15803d;
+  --pin-high: #e53935;
+  --pin-low: #3949ab;
+  --pin-float: #9e9e9e;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 4px 16px rgba(0, 0, 0, .06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #161615; --surface: #1e1e1c; --surface-2: #232321; --surface-hover: #2a2a27;
+    --line: #33332f; --line-strong: #46463f; --text: #ecebe6; --muted: #a3a29b; --faint: #75746d;
+    --accent: #2dd4bf; --accent-soft: #123b37; --accent-text: #08201d;
+    --danger: #fb923c; --danger-soft: #3b2215; --warning: #facc15; --warning-soft: #362d0f; --success: #4ade80;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 4px 16px rgba(0, 0, 0, .3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #161615; --surface: #1e1e1c; --surface-2: #232321; --surface-hover: #2a2a27;
+  --line: #33332f; --line-strong: #46463f; --text: #ecebe6; --muted: #a3a29b; --faint: #75746d;
+  --accent: #2dd4bf; --accent-soft: #123b37; --accent-text: #08201d;
+  --danger: #fb923c; --danger-soft: #3b2215; --warning: #facc15; --warning-soft: #362d0f; --success: #4ade80;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 4px 16px rgba(0, 0, 0, .3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--text); font: var(--fs-md)/1.4 var(--font-ui); -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+.shell { display: flex; flex-direction: column; height: 100%; }
+.toolbar { display: flex; align-items: center; gap: var(--space-3); height: 40px; padding: 0 var(--space-3); border-bottom: 1px solid var(--line); background: var(--surface); }
+.brand { font-weight: 600; }
+.panels { flex: 1; display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--line); min-height: 0; }
+.panel { background: var(--surface); min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
+.panel-placeholder { margin: auto; color: var(--faint); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .05em; }

@@ -1,0 +1,166 @@
+{
+  "name": "TP6 — Interruption sur changement du PORTB",
+  "source": "Chapitre 6 (montage reconstitué dans le style des TP)",
+  "description": "4 LOGICSTATE sur RB4 à RB7 ; D1 à D4 LED-RED sur RA0 à RA3, cathodes → GND. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": 0, "y": 0 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "D1",
+      "kind": "LED",
+      "ref": "D1",
+      "value": "LED-RED",
+      "at": { "x": 63, "y": 8 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "D2",
+      "kind": "LED",
+      "ref": "D2",
+      "value": "LED-RED",
+      "at": { "x": 54, "y": 8 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "D3",
+      "kind": "LED",
+      "ref": "D3",
+      "value": "LED-RED",
+      "at": { "x": 45, "y": 8 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "D4",
+      "kind": "LED",
+      "ref": "D4",
+      "value": "LED-RED",
+      "at": { "x": 36, "y": 8 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 50, "y": 13 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "LS1",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 15 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS2",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 18 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS3",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 21 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS4",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 34, "y": 24 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 0
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 15, "y": 0 }, { "x": 63, "y": 0 }, { "x": 63, "y": 6 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 15, "y": 1 }, { "x": 54, "y": 1 }, { "x": 54, "y": 6 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 15, "y": 2 }, { "x": 45, "y": 2 }, { "x": 45, "y": 6 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 15, "y": 3 }, { "x": 36, "y": 3 }, { "x": 36, "y": 6 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 36, "y": 10 }, { "x": 36, "y": 11 }, { "x": 63, "y": 11 }, { "x": 63, "y": 10 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 45, "y": 10 }, { "x": 45, "y": 11 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 54, "y": 10 }, { "x": 54, "y": 11 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 50, "y": 12 }, { "x": 50, "y": 11 }]
+    },
+    {
+      "id": "W9",
+      "points": [{ "x": 15, "y": 10 }, { "x": 30, "y": 10 }, { "x": 30, "y": 15 }, { "x": 32, "y": 15 }]
+    },
+    {
+      "id": "W10",
+      "points": [{ "x": 15, "y": 11 }, { "x": 29, "y": 11 }, { "x": 29, "y": 18 }, { "x": 32, "y": 18 }]
+    },
+    {
+      "id": "W11",
+      "points": [{ "x": 15, "y": 12 }, { "x": 28, "y": 12 }, { "x": 28, "y": 21 }, { "x": 32, "y": 21 }]
+    },
+    {
+      "id": "W12",
+      "points": [{ "x": 15, "y": 13 }, { "x": 27, "y": 13 }, { "x": 27, "y": 24 }, { "x": 32, "y": 24 }]
+    }
+  ]
+}

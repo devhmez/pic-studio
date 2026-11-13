@@ -1,0 +1,124 @@
+{
+  "name": "TP4 — Interruption INTE",
+  "source": "cours/TP_inte.DSN",
+  "description": "BUTTON entre RB0/INT et +5 V, R1 220 de RB0 vers la masse (rappel) ; D1 LED-RED sur RB3 → GND ; 7SEG-BCD sur RA0..RA3 (E0..E3). Horloge 8 MHz.",
+  "clockHz": 8000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": -11, "y": -6 },
+      "rotation": 0,
+      "props": {
+        "clock": "8MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "SEG1",
+      "kind": "7SEG-BCD",
+      "ref": "",
+      "at": { "x": 10, "y": -18 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "BTN1",
+      "kind": "BUTTON",
+      "ref": "",
+      "at": { "x": 12, "y": 0 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "D1",
+      "kind": "LED",
+      "ref": "D1",
+      "value": "LED-RED",
+      "at": { "x": 14, "y": 6 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 13, "y": 15 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR1",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 20, "y": -5 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R1",
+      "kind": "RES",
+      "ref": "R1",
+      "value": "220",
+      "at": { "x": 16, "y": 2 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 4, "y": -3 }, { "x": 11, "y": -3 }, { "x": 11, "y": -7.5 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 4, "y": -4 }, { "x": 12.5, "y": -4 }, { "x": 12.5, "y": -7.5 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 4, "y": -5 }, { "x": 14, "y": -5 }, { "x": 14, "y": -7.5 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 4, "y": -6 }, { "x": 15.5, "y": -6 }, { "x": 15.5, "y": -7.5 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 4, "y": 3 }, { "x": 14, "y": 3 }, { "x": 14, "y": 4 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 14.5, "y": 0 }, { "x": 20, "y": 0 }, { "x": 20, "y": -4 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 4, "y": 0 }, { "x": 7, "y": 0 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 9.5, "y": 0 }, { "x": 7, "y": 0 }]
+    },
+    {
+      "id": "W9",
+      "points": [{ "x": 14, "y": 2 }, { "x": 7, "y": 2 }, { "x": 7, "y": 0 }]
+    },
+    {
+      "id": "W10",
+      "points": [{ "x": 13, "y": 14 }, { "x": 13, "y": 13 }]
+    },
+    {
+      "id": "W11",
+      "points": [{ "x": 14, "y": 8 }, { "x": 14, "y": 9 }, { "x": 13, "y": 9 }, { "x": 13, "y": 13 }]
+    },
+    {
+      "id": "W12",
+      "points": [{ "x": 19, "y": 2 }, { "x": 20, "y": 2 }, { "x": 20, "y": 13 }, { "x": 13, "y": 13 }]
+    }
+  ]
+}

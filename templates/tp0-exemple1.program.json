@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "title": "TP0 — Exemple 1 : allumer une LED (RA0)",
+  "description": "La LED bleue branchée sur RA0 s’allume au démarrage ; le programme se termine ensuite.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": false,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "led",
+      "name": "LED",
+      "pin": "RA0",
+      "dir": "out",
+      "label": "Led bleue",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [],
+  "init": [{ "id": "s1", "kind": "set", "signal": "led", "value": 1, "comment": "Allumer la LED" }],
+  "loop": null,
+  "functions": []
+}

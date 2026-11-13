@@ -1,0 +1,82 @@
+{
+  "name": "Feu tricolore avec interruption",
+  "source": "cours/trafficint.DSN",
+  "description": "LOGICSTATE (capteur jour/nuit) sur RB0/INT ; TRAFFIC LIGHTS rouge RB2, orange RB3, vert RB4 ; 7SEG-BCD-BLUE sur RA0..RA3 (E0..E3). Horloge 8 MHz.",
+  "clockHz": 8000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": -13, "y": -14 },
+      "rotation": 0,
+      "props": {
+        "clock": "8MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "SEG1",
+      "kind": "7SEG-BCD",
+      "ref": "",
+      "at": { "x": 4, "y": -26 },
+      "rotation": 0,
+      "props": {
+        "color": "BLUE"
+      }
+    },
+    {
+      "id": "TL1",
+      "kind": "TRAFFIC_LIGHTS",
+      "ref": "",
+      "at": { "x": 12, "y": -2 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "LS1",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 13, "y": -11 },
+      "rotation": 0,
+      "props": {
+        "state": 0
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 2, "y": -11 }, { "x": 5, "y": -11 }, { "x": 5, "y": -15.5 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 2, "y": -12 }, { "x": 6.5, "y": -12 }, { "x": 6.5, "y": -15.5 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 2, "y": -13 }, { "x": 8, "y": -13 }, { "x": 8, "y": -15.5 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 2, "y": -14 }, { "x": 9.5, "y": -14 }, { "x": 9.5, "y": -15.5 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 2, "y": -6 }, { "x": 7, "y": -6 }, { "x": 7, "y": -5 }, { "x": 8, "y": -5 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 2, "y": -5 }, { "x": 6, "y": -5 }, { "x": 6, "y": -2 }, { "x": 8, "y": -2 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 2, "y": -4 }, { "x": 5, "y": -4 }, { "x": 5, "y": 1 }, { "x": 8, "y": 1 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 2, "y": -8 }, { "x": 16, "y": -8 }, { "x": 16, "y": -11 }, { "x": 15, "y": -11 }]
+    }
+  ]
+}

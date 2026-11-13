@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "title": "Exercice — Compteur 0 à 9 et boutons RB4 à RB7",
+  "description": "Le compteur affiche 0 à 9 (RA0 à RA3), un chiffre toutes les 500 ms. Un appui sur un des boutons B4 à B7 (RB4 à RB7) déclenche l’interruption RBIE : le numéro du bouton (4 à 7) s’affiche pendant 500 ms, puis le compteur reprend. Le relâchement du bouton provoque une deuxième interruption qui ne fait rien (aucun bouton à 1).",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": false,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "b4",
+      "name": "B4",
+      "pin": "RB4",
+      "dir": "in",
+      "label": "Bouton B4",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "B4"
+    },
+    {
+      "id": "b5",
+      "name": "B5",
+      "pin": "RB5",
+      "dir": "in",
+      "label": "Bouton B5",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "B5"
+    },
+    {
+      "id": "b6",
+      "name": "B6",
+      "pin": "RB6",
+      "dir": "in",
+      "label": "Bouton B6",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "B6"
+    },
+    {
+      "id": "b7",
+      "name": "B7",
+      "pin": "RB7",
+      "dir": "in",
+      "label": "Bouton B7",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "B7"
+    }
+  ],
+  "buses": [
+    {
+      "id": "afficheur",
+      "name": "AFFICHEUR",
+      "port": "A",
+      "lsb": 0,
+      "width": 4,
+      "dir": "out",
+      "label": "Afficheur 7 segments BCD",
+      "device": "bcd",
+      "componentId": "SEG1"
+    }
+  ],
+  "constants": [],
+  "variables": [{ "name": "i", "type": "unsigned char" }],
+  "interrupts": { "rbChange": true, "gie": true },
+  "init": [
+    {
+      "id": "s1",
+      "kind": "display",
+      "bus": "afficheur",
+      "value": { "kind": "num", "value": 0, "radix": 16 }
+    }
+  ],
+  "loop": [
+    {
+      "id": "s2",
+      "kind": "repeat",
+      "times": 10,
+      "counter": "i",
+      "body": [
+        {
+          "id": "s3",
+          "kind": "display",
+          "bus": "afficheur",
+          "value": { "kind": "var", "name": "i" }
+        },
+        { "id": "s4", "kind": "delay", "ms": 500 }
+      ],
+      "lead": "Compteur de 0 à 9"
+    }
+  ],
+  "functions": [
+    {
+      "id": "f1",
+      "name": "interrupt",
+      "kind": "interrupt",
+      "body": [
+        {
+          "id": "s5",
+          "kind": "if",
+          "branches": [
+            {
+              "id": "b1",
+              "cond": { "kind": "flag", "flag": "RBIF", "value": 1 },
+              "body": [
+                {
+                  "id": "s6",
+                  "kind": "if",
+                  "branches": [
+                    {
+                      "id": "b2",
+                      "cond": { "kind": "pin", "signal": "b4", "value": 1 },
+                      "body": [
+                        {
+                          "id": "s7",
+                          "kind": "display",
+                          "bus": "afficheur",
+                          "value": { "kind": "num", "value": 4 }
+                        },
+                        { "id": "s8", "kind": "delay", "ms": 500 }
+                      ]
+                    },
+                    {
+                      "id": "b3",
+                      "cond": { "kind": "pin", "signal": "b5", "value": 1 },
+                      "body": [
+                        {
+                          "id": "s9",
+                          "kind": "display",
+                          "bus": "afficheur",
+                          "value": { "kind": "num", "value": 5 }
+                        },
+                        { "id": "s10", "kind": "delay", "ms": 500 }
+                      ]
+                    },
+                    {
+                      "id": "b4",
+                      "cond": { "kind": "pin", "signal": "b6", "value": 1 },
+                      "body": [
+                        {
+                          "id": "s11",
+                          "kind": "display",
+                          "bus": "afficheur",
+                          "value": { "kind": "num", "value": 6 }
+                        },
+                        { "id": "s12", "kind": "delay", "ms": 500 }
+                      ]
+                    },
+                    {
+                      "id": "b5",
+                      "cond": { "kind": "pin", "signal": "b7", "value": 1 },
+                      "body": [
+                        {
+                          "id": "s13",
+                          "kind": "display",
+                          "bus": "afficheur",
+                          "value": { "kind": "num", "value": 7 }
+                        },
+                        { "id": "s14", "kind": "delay", "ms": 500 }
+                      ]
+                    }
+                  ],
+                  "otherwise": null,
+                  "lead": "Lire les boutons : la lecture de PORTB met fin à la condition de changement"
+                },
+                {
+                  "id": "s15",
+                  "kind": "clearFlag",
+                  "flag": "RBIF",
+                  "comment": "RBIF peut alors être effacé"
+                }
+              ],
+              "comment": "Changement d'état sur RB4 à RB7"
+            }
+          ],
+          "otherwise": null
+        }
+      ],
+      "lead": "Programme d'interruption : appelé à chaque changement d'état de RB4 à RB7 (appui ET relâchement)"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "TP0 — Exemple 1 : allumer une LED (RA0)",
+  "source": "cours/EXEMPLE1.DSN",
+  "description": "RA0 → LED-BLUE D1 → GND (sans résistance). Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": -8, "y": -10 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "D1",
+      "kind": "LED",
+      "ref": "D1",
+      "value": "LED-BLUE",
+      "at": { "x": 23, "y": -7 },
+      "rotation": 0,
+      "props": {
+        "color": "BLUE"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 23, "y": -2 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 7, "y": -10 }, { "x": 23, "y": -10 }, { "x": 23, "y": -9 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 23, "y": -5 }, { "x": 23, "y": -3 }]
+    }
+  ]
+}

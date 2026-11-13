@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "title": "TP0 — Exemple 2 : commander une LED par un bouton",
+  "description": "La LED verte (RA0) recopie l’état de l’interrupteur LOGICSTATE branché sur RB0.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "port", "B": "auto" },
+    "macros": false,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "bouton",
+      "name": "BOUTON",
+      "pin": "RB0",
+      "dir": "in",
+      "label": "Interrupteur",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS1"
+    },
+    {
+      "id": "led",
+      "name": "LED",
+      "pin": "RA0",
+      "dir": "out",
+      "label": "Led verte",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [],
+  "init": [{ "id": "s1", "kind": "set", "signal": "led", "value": 0 }],
+  "loop": [
+    {
+      "id": "s2",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b1",
+          "cond": { "kind": "pin", "signal": "bouton", "value": 1 },
+          "body": [{ "id": "s3", "kind": "set", "signal": "led", "value": 1 }]
+        }
+      ],
+      "otherwise": {
+        "id": "b2",
+        "body": [{ "id": "s4", "kind": "set", "signal": "led", "value": 0 }]
+      },
+      "lead": "La LED suit le bouton"
+    }
+  ],
+  "functions": []
+}

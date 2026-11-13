@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "title": "Ch5 — Interruption externe RB0/INT",
+  "description": "Chaque appui sur le bouton (RB0/INT, front montant) déclenche l’interruption qui inverse la LED rouge (RB1) ; pendant ce temps, la boucle principale fait clignoter la LED verte (RB2) toutes les 500 ms.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": true,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "bouton",
+      "name": "BOUTON",
+      "pin": "RB0",
+      "dir": "in",
+      "label": "Bouton",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "BOUTON"
+    },
+    {
+      "id": "led_int",
+      "name": "LED_INT",
+      "pin": "RB1",
+      "dir": "out",
+      "label": "Led rouge",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    },
+    {
+      "id": "led_cli",
+      "name": "LED_CLI",
+      "pin": "RB2",
+      "dir": "out",
+      "label": "Led verte",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D2"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [],
+  "interrupts": { "int": { "edge": "rising" }, "gie": true },
+  "init": [
+    { "id": "s1", "kind": "set", "signal": "led_int", "value": 0 },
+    { "id": "s2", "kind": "set", "signal": "led_cli", "value": 0 }
+  ],
+  "loop": [
+    { "id": "s3", "kind": "set", "signal": "led_cli", "value": 1 },
+    { "id": "s4", "kind": "delay", "ms": 500 },
+    { "id": "s5", "kind": "set", "signal": "led_cli", "value": 0 },
+    { "id": "s6", "kind": "delay", "ms": 500 }
+  ],
+  "functions": [
+    {
+      "id": "f1",
+      "name": "interrupt",
+      "kind": "interrupt",
+      "body": [
+        {
+          "id": "s7",
+          "kind": "if",
+          "branches": [
+            {
+              "id": "b1",
+              "cond": { "kind": "flag", "flag": "INTF", "value": 1 },
+              "body": [
+                { "id": "s8", "kind": "toggle", "signal": "led_int", "comment": "Inverser la LED" },
+                {
+                  "id": "s9",
+                  "kind": "clearFlag",
+                  "flag": "INTF",
+                  "comment": "Effacer le drapeau INTF"
+                }
+              ],
+              "comment": "Interruption RB0/INT"
+            }
+          ],
+          "otherwise": null
+        }
+      ],
+      "lead": "Programme d'interruption : appelé à chaque front montant sur RB0/INT"
+    }
+  ]
+}

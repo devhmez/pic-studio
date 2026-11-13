@@ -1,0 +1,64 @@
+{
+  "name": "TP0 — Exemple 2 : commander une LED par un bouton",
+  "source": "cours/EXEMPLE2.DSN",
+  "description": "LOGICSTATE (état initial 1) → RB0 ; RA0 → LED-GREEN D1 → GND. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": -8, "y": -8 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "D1",
+      "kind": "LED",
+      "ref": "D1",
+      "value": "LED-GREEN",
+      "at": { "x": 26, "y": -4 },
+      "rotation": 0,
+      "props": {
+        "color": "GREEN"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 26, "y": 2 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "LS1",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 22, "y": -2 },
+      "rotation": 0,
+      "mirror": true,
+      "props": {
+        "state": 1
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 7, "y": -8 }, { "x": 26, "y": -8 }, { "x": 26, "y": -6 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 26, "y": -2 }, { "x": 26, "y": 1 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 7, "y": -2 }, { "x": 20, "y": -2 }]
+    }
+  ]
+}

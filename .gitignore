@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output (Vite renderer, Electron bundles, packaged app)
+# Note: build/ is NOT ignored on purpose: it holds the app icon sources used by the packaging script.
+dist/
+dist-electron/
+out/
+dist-app/
+*.tsbuildinfo
+
+# Local tooling
+.venv-docs/
+.claude/
+
+# Course handouts and vendor files used locally as test inputs: not redistributable
+cours/
+
+# Projects saved from the app at the repository root
+/*.picproj
+
+*.log
+.DS_Store

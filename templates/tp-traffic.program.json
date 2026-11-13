@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "title": "TP — Feu tricolore",
+  "description": "Le capteur de luminosité (RA3) choisit le mode : nuit, orange clignotant et « A » affiché ; jour, cycle rouge, orange, vert avec un décompte chaque seconde sur l’afficheur. Choix à connaître : l’orange affiche 2, 1, 0 pendant 1 s chacun, soit 3 s (l’énoncé dit « 2 secondes ») ; le capteur n’est lu qu’au début de chaque cycle, donc le mode nuit attend la fin du cycle de jour en cours.",
+  "clockHz": 8000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": true,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "capteur",
+      "name": "CAPTEUR",
+      "pin": "RA3",
+      "dir": "in",
+      "label": "Capteur de luminosité",
+      "activeLevel": 1,
+      "device": "sensor",
+      "componentId": "LDR1"
+    },
+    {
+      "id": "rouge",
+      "name": "ROUGE",
+      "pin": "RA0",
+      "dir": "out",
+      "label": "Feu rouge",
+      "activeLevel": 1,
+      "device": "lamp",
+      "componentId": "TL1"
+    },
+    {
+      "id": "orange",
+      "name": "ORANGE",
+      "pin": "RA1",
+      "dir": "out",
+      "label": "Feu orange",
+      "activeLevel": 1,
+      "device": "lamp",
+      "componentId": "TL1"
+    },
+    {
+      "id": "vert",
+      "name": "VERT",
+      "pin": "RA2",
+      "dir": "out",
+      "label": "Feu vert",
+      "activeLevel": 1,
+      "device": "lamp",
+      "componentId": "TL1"
+    }
+  ],
+  "buses": [
+    {
+      "id": "afficheur",
+      "name": "AFFICHEUR",
+      "port": "B",
+      "lsb": 0,
+      "width": 4,
+      "dir": "out",
+      "label": "Afficheur 7 segments BCD",
+      "device": "bcd",
+      "componentId": "SEG1"
+    }
+  ],
+  "constants": [],
+  "variables": [{ "name": "compte", "type": "unsigned char" }],
+  "init": [
+    { "id": "s1", "kind": "set", "signal": "rouge", "value": 0 },
+    { "id": "s2", "kind": "set", "signal": "orange", "value": 0 },
+    { "id": "s3", "kind": "set", "signal": "vert", "value": 0 },
+    {
+      "id": "s4",
+      "kind": "display",
+      "bus": "afficheur",
+      "value": { "kind": "num", "value": 0, "radix": 16 }
+    }
+  ],
+  "loop": [
+    {
+      "id": "s5",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b1",
+          "cond": { "kind": "pin", "signal": "capteur", "value": 0 },
+          "body": [
+            {
+              "id": "s6",
+              "kind": "set",
+              "signal": "rouge",
+              "value": 0,
+              "lead": "Mode nuit : orange clignotant, afficheur \"A\""
+            },
+            { "id": "s7", "kind": "set", "signal": "vert", "value": 0 },
+            {
+              "id": "s8",
+              "kind": "display",
+              "bus": "afficheur",
+              "value": { "kind": "num", "value": 10, "radix": 16 },
+              "comment": "Afficher la lettre 'A'"
+            },
+            { "id": "s9", "kind": "set", "signal": "orange", "value": 1 },
+            { "id": "s10", "kind": "delay", "ms": 500 },
+            { "id": "s11", "kind": "set", "signal": "orange", "value": 0 },
+            { "id": "s12", "kind": "delay", "ms": 500 }
+          ],
+          "note": "Mode nuit"
+        }
+      ],
+      "otherwise": {
+        "id": "b2",
+        "body": [
+          {
+            "id": "s13",
+            "kind": "set",
+            "signal": "rouge",
+            "value": 1,
+            "lead": "Mode jour : rouge 10 s, décompte de 9 à 0"
+          },
+          { "id": "s14", "kind": "set", "signal": "orange", "value": 0 },
+          { "id": "s15", "kind": "set", "signal": "vert", "value": 0 },
+          {
+            "id": "s16",
+            "kind": "repeat",
+            "times": 10,
+            "counter": "compte",
+            "body": [
+              {
+                "id": "s17",
+                "kind": "display",
+                "bus": "afficheur",
+                "value": {
+                  "kind": "bin",
+                  "op": "-",
+                  "left": { "kind": "num", "value": 9 },
+                  "right": { "kind": "var", "name": "compte" }
+                }
+              },
+              { "id": "s18", "kind": "delay", "ms": 1000 }
+            ]
+          },
+          {
+            "id": "s19",
+            "kind": "set",
+            "signal": "rouge",
+            "value": 0,
+            "lead": "Orange : décompte de 2 à 0 (3 valeurs, 1 s chacune : 3 s ; l'énoncé dit 2 s)"
+          },
+          { "id": "s20", "kind": "set", "signal": "orange", "value": 1 },
+          { "id": "s21", "kind": "set", "signal": "vert", "value": 0 },
+          {
+            "id": "s22",
+            "kind": "repeat",
+            "times": 3,
+            "counter": "compte",
+            "body": [
+              {
+                "id": "s23",
+                "kind": "display",
+                "bus": "afficheur",
+                "value": {
+                  "kind": "bin",
+                  "op": "-",
+                  "left": { "kind": "num", "value": 2 },
+                  "right": { "kind": "var", "name": "compte" }
+                }
+              },
+              { "id": "s24", "kind": "delay", "ms": 1000 }
+            ]
+          },
+          {
+            "id": "s25",
+            "kind": "set",
+            "signal": "rouge",
+            "value": 0,
+            "lead": "Vert : 10 s, décompte de 9 à 0"
+          },
+          { "id": "s26", "kind": "set", "signal": "orange", "value": 0 },
+          { "id": "s27", "kind": "set", "signal": "vert", "value": 1 },
+          {
+            "id": "s28",
+            "kind": "repeat",
+            "times": 10,
+            "counter": "compte",
+            "body": [
+              {
+                "id": "s29",
+                "kind": "display",
+                "bus": "afficheur",
+                "value": {
+                  "kind": "bin",
+                  "op": "-",
+                  "left": { "kind": "num", "value": 9 },
+                  "right": { "kind": "var", "name": "compte" }
+                }
+              },
+              { "id": "s30", "kind": "delay", "ms": 1000 }
+            ]
+          }
+        ],
+        "note": "Mode jour"
+      },
+      "lead": "Lecture du capteur de luminosité (une fois par cycle : le mode nuit attend la fin du cycle de jour)"
+    }
+  ],
+  "functions": []
+}

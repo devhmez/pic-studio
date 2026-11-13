@@ -1,0 +1,224 @@
+{
+  "name": "Exercice — Compteur et boutons RB4 à RB7",
+  "source": "INTERRUPTIONS_e2026.pptx, diapo « Exercice d’application » (montage redessiné)",
+  "description": "7SEG-BCD sur RA0..RA3 ; boutons B4 à B7 sur RB4..RB7, chacun vers +5 V avec un rappel 10k vers la masse. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": 0, "y": 0 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "SEG1",
+      "kind": "7SEG-BCD",
+      "ref": "",
+      "at": { "x": 22, "y": -12 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "B4",
+      "kind": "BUTTON",
+      "ref": "B4",
+      "at": { "x": 42, "y": 17 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R1",
+      "kind": "RES",
+      "ref": "R1",
+      "value": "10k",
+      "at": { "x": 36, "y": 20 },
+      "rotation": 90,
+      "props": {}
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 36, "y": 25 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "B5",
+      "kind": "BUTTON",
+      "ref": "B5",
+      "at": { "x": 42, "y": 27 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R2",
+      "kind": "RES",
+      "ref": "R2",
+      "value": "10k",
+      "at": { "x": 36, "y": 30 },
+      "rotation": 90,
+      "props": {}
+    },
+    {
+      "id": "GND2",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 36, "y": 35 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "B6",
+      "kind": "BUTTON",
+      "ref": "B6",
+      "at": { "x": 42, "y": 37 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R3",
+      "kind": "RES",
+      "ref": "R3",
+      "value": "10k",
+      "at": { "x": 36, "y": 40 },
+      "rotation": 90,
+      "props": {}
+    },
+    {
+      "id": "GND3",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 36, "y": 45 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "B7",
+      "kind": "BUTTON",
+      "ref": "B7",
+      "at": { "x": 42, "y": 47 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R4",
+      "kind": "RES",
+      "ref": "R4",
+      "value": "10k",
+      "at": { "x": 36, "y": 50 },
+      "rotation": 90,
+      "props": {}
+    },
+    {
+      "id": "GND4",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 36, "y": 55 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR1",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 48, "y": 14 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 15, "y": 0 }, { "x": 27.5, "y": 0 }, { "x": 27.5, "y": -1.5 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 15, "y": 1 }, { "x": 26, "y": 1 }, { "x": 26, "y": -1.5 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 15, "y": 2 }, { "x": 24.5, "y": 2 }, { "x": 24.5, "y": -1.5 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 15, "y": 3 }, { "x": 23, "y": 3 }, { "x": 23, "y": -1.5 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 15, "y": 10 }, { "x": 30, "y": 10 }, { "x": 30, "y": 17 }, { "x": 39.5, "y": 17 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 44.5, "y": 17 }, { "x": 48, "y": 17 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 36, "y": 18 }, { "x": 36, "y": 17 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 36, "y": 23 }, { "x": 36, "y": 24 }]
+    },
+    {
+      "id": "W9",
+      "points": [{ "x": 15, "y": 11 }, { "x": 29, "y": 11 }, { "x": 29, "y": 27 }, { "x": 39.5, "y": 27 }]
+    },
+    {
+      "id": "W10",
+      "points": [{ "x": 44.5, "y": 27 }, { "x": 48, "y": 27 }]
+    },
+    {
+      "id": "W11",
+      "points": [{ "x": 36, "y": 28 }, { "x": 36, "y": 27 }]
+    },
+    {
+      "id": "W12",
+      "points": [{ "x": 36, "y": 33 }, { "x": 36, "y": 34 }]
+    },
+    {
+      "id": "W13",
+      "points": [{ "x": 15, "y": 12 }, { "x": 28, "y": 12 }, { "x": 28, "y": 37 }, { "x": 39.5, "y": 37 }]
+    },
+    {
+      "id": "W14",
+      "points": [{ "x": 44.5, "y": 37 }, { "x": 48, "y": 37 }]
+    },
+    {
+      "id": "W15",
+      "points": [{ "x": 36, "y": 38 }, { "x": 36, "y": 37 }]
+    },
+    {
+      "id": "W16",
+      "points": [{ "x": 36, "y": 43 }, { "x": 36, "y": 44 }]
+    },
+    {
+      "id": "W17",
+      "points": [{ "x": 15, "y": 13 }, { "x": 27, "y": 13 }, { "x": 27, "y": 47 }, { "x": 39.5, "y": 47 }]
+    },
+    {
+      "id": "W18",
+      "points": [{ "x": 44.5, "y": 47 }, { "x": 48, "y": 47 }]
+    },
+    {
+      "id": "W19",
+      "points": [{ "x": 36, "y": 48 }, { "x": 36, "y": 47 }]
+    },
+    {
+      "id": "W20",
+      "points": [{ "x": 36, "y": 53 }, { "x": 36, "y": 54 }]
+    },
+    {
+      "id": "W21",
+      "points": [{ "x": 48, "y": 15 }, { "x": 48, "y": 47 }]
+    }
+  ]
+}

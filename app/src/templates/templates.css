@@ -1,0 +1,74 @@
+/* Template picker (inside the shell's .modal). Thumbnails keep the ISIS sheet colour; everything else uses tokens. */
+
+.tp-picker { display: flex; flex-direction: column; min-height: 0; }
+
+.tp-head {
+  position: sticky; top: 0; z-index: 2;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.tp-heading { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -.01em; }
+.tp-sub { margin: 2px 0 0; color: var(--muted); font-size: var(--fs-sm); }
+
+.tp-body { padding: var(--space-2) var(--space-4) var(--space-4); }
+.tp-group { margin-top: var(--space-3); }
+.tp-group-title {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  margin: 0 0 var(--space-2); font-size: var(--fs-md); font-weight: 600; color: var(--text);
+}
+.tp-group-sub { font-size: var(--fs-sm); font-weight: 400; color: var(--muted); }
+
+.tp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.tp-grid > li { display: flex; }
+
+.tp-card {
+  flex: 1; display: flex; flex-direction: column; min-width: 0; padding: 0; overflow: hidden;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface);
+  color: var(--text); text-align: left; cursor: pointer;
+  transition: border-color .14s ease, box-shadow .14s ease, transform .14s ease;
+}
+.tp-card:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); box-shadow: var(--shadow); }
+.tp-card:active { transform: translateY(1px); }
+.tp-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tp-card.is-current { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+
+.tp-thumb {
+  display: flex; align-items: center; justify-content: center; height: 132px; padding: 8px;
+  background: #e0e0d0; border-bottom: 1px solid var(--line);
+}
+.tp-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; user-select: none; }
+.tp-thumb-blank { background: var(--surface-2); color: var(--faint); }
+.tp-blank .tp-thumb { height: 72px; }
+
+.tp-card-body { display: flex; flex-direction: column; gap: 4px; flex: 1; padding: 10px 12px 10px; }
+.tp-card-title { font-weight: 600; font-size: var(--fs-md); line-height: 1.3; }
+.tp-card-desc {
+  color: var(--muted); font-size: var(--fs-sm); line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.tp-card-foot { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 6px; }
+.tp-badge {
+  display: inline-flex; align-items: center; height: 18px; padding: 0 6px; border-radius: 999px;
+  background: var(--surface-hover); color: var(--muted); font-size: var(--fs-xs);
+}
+.tp-badge.is-current { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.tp-open { margin-left: auto; display: inline-flex; align-items: center; gap: 2px; color: var(--accent); font-size: var(--fs-sm); font-weight: 500; }
+.tp-open-chevron { transform: rotate(-90deg); }
+.tp-card:hover .tp-open-chevron { transform: rotate(-90deg) translateY(2px); }
+
+.tp-confirm {
+  position: sticky; bottom: 0; z-index: 3;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3);
+  margin-top: auto; padding: var(--space-3) var(--space-4);
+  background: var(--warning-soft); border-top: 1px solid color-mix(in srgb, var(--warning) 35%, var(--line));
+}
+.tp-confirm > svg { color: var(--warning); flex: none; }
+.tp-confirm p { flex: 1 1 260px; margin: 0; font-size: var(--fs-sm); }
+.tp-confirm-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.tp-confirm .tool-button { border-color: var(--line); background: var(--surface); }
+.tp-confirm .tool-button.tp-danger { background: var(--danger); border-color: transparent; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-card, .tp-open-chevron { transition: none; }
+}

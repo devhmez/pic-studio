@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "title": "TP — Boîtier électronique de vote (A / B)",
+  "description": "Compte les votes A (RA0) et B (RA1) avec un clignotement de confirmation (RA2) ; « Résultat » (RA3) affiche A, B ou E (égalité, LED verte RB5) sur l’afficheur 7 segments BCD.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": true,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": true
+  },
+  "signals": [
+    {
+      "id": "vote_a",
+      "name": "VOTE_A",
+      "pin": "RA0",
+      "dir": "in",
+      "label": "Bouton Vote A",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "VOTE_A"
+    },
+    {
+      "id": "vote_b",
+      "name": "VOTE_B",
+      "pin": "RA1",
+      "dir": "in",
+      "label": "Bouton Vote B",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "VOTE_B"
+    },
+    {
+      "id": "resultat",
+      "name": "RESULTAT",
+      "pin": "RA3",
+      "dir": "in",
+      "label": "Bouton Résultat",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "RESULTAT"
+    },
+    {
+      "id": "led_vote",
+      "name": "LED_VOTE",
+      "pin": "RA2",
+      "dir": "out",
+      "label": "Led de confirmation",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "CONFIRMATION"
+    },
+    {
+      "id": "led_egal",
+      "name": "LED_EGAL",
+      "pin": "RB5",
+      "dir": "out",
+      "label": "Led verte",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "EGALITE"
+    }
+  ],
+  "buses": [
+    {
+      "id": "afficheur",
+      "name": "AFFICHEUR",
+      "port": "B",
+      "lsb": 0,
+      "width": 4,
+      "dir": "out",
+      "label": "Afficheur 7 segments BCD",
+      "device": "bcd",
+      "componentId": "SEG1"
+    }
+  ],
+  "constants": [],
+  "variables": [
+    { "name": "var1", "type": "unsigned char" },
+    { "name": "var2", "type": "unsigned char" },
+    { "name": "z", "type": "unsigned char" },
+    { "name": "i", "type": "unsigned char" }
+  ],
+  "init": [
+    {
+      "id": "s1",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "var1" },
+      "value": { "kind": "num", "value": 0 }
+    },
+    {
+      "id": "s2",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "var2" },
+      "value": { "kind": "num", "value": 0 }
+    },
+    { "id": "s3", "kind": "set", "signal": "led_vote", "value": 0 },
+    { "id": "s4", "kind": "set", "signal": "led_egal", "value": 0 },
+    {
+      "id": "s5",
+      "kind": "display",
+      "bus": "afficheur",
+      "value": { "kind": "num", "value": 15, "radix": 16 },
+      "comment": "Afficher la lettre 'F'"
+    },
+    { "id": "s6", "kind": "delay", "ms": 500 }
+  ],
+  "loop": [
+    {
+      "id": "s7",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b1",
+          "cond": { "kind": "pin", "signal": "vote_a", "value": 1 },
+          "body": [
+            {
+              "id": "s8",
+              "kind": "incr",
+              "variable": "var1",
+              "lead": "Vote A : compter, puis faire clignoter la LED de confirmation"
+            },
+            { "id": "s9", "kind": "set", "signal": "led_vote", "value": 1 },
+            { "id": "s10", "kind": "delay", "ms": 500 },
+            { "id": "s11", "kind": "set", "signal": "led_vote", "value": 0 },
+            { "id": "s12", "kind": "delay", "ms": 500 },
+            {
+              "id": "s13",
+              "kind": "waitFor",
+              "cond": { "kind": "pin", "signal": "vote_a", "value": 0 },
+              "comment": "Attente du relâchement du bouton"
+            }
+          ]
+        }
+      ],
+      "otherwise": null
+    },
+    {
+      "id": "s14",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b2",
+          "cond": { "kind": "pin", "signal": "vote_b", "value": 1 },
+          "body": [
+            {
+              "id": "s15",
+              "kind": "incr",
+              "variable": "var2",
+              "lead": "Vote B : compter, puis faire clignoter la LED de confirmation"
+            },
+            { "id": "s16", "kind": "set", "signal": "led_vote", "value": 1 },
+            { "id": "s17", "kind": "delay", "ms": 500 },
+            { "id": "s18", "kind": "set", "signal": "led_vote", "value": 0 },
+            { "id": "s19", "kind": "delay", "ms": 500 },
+            {
+              "id": "s20",
+              "kind": "waitFor",
+              "cond": { "kind": "pin", "signal": "vote_b", "value": 0 },
+              "comment": "Attente du relâchement du bouton"
+            }
+          ]
+        }
+      ],
+      "otherwise": null
+    },
+    {
+      "id": "s21",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b3",
+          "cond": { "kind": "pin", "signal": "resultat", "value": 1 },
+          "body": [
+            {
+              "id": "s22",
+              "kind": "assign",
+              "target": { "kind": "var", "name": "z" },
+              "value": {
+                "kind": "bin",
+                "op": "-",
+                "left": { "kind": "var", "name": "var1" },
+                "right": { "kind": "var", "name": "var2" }
+              },
+              "lead": "Dépouillement",
+              "comment": "Soustraction"
+            },
+            {
+              "id": "s23",
+              "kind": "if",
+              "branches": [
+                {
+                  "id": "b4",
+                  "cond": { "kind": "flag", "flag": "Z", "value": 1 },
+                  "body": [
+                    {
+                      "id": "s24",
+                      "kind": "display",
+                      "bus": "afficheur",
+                      "value": { "kind": "num", "value": 14, "radix": 16 },
+                      "comment": "Afficher la lettre 'E'"
+                    },
+                    {
+                      "id": "s25",
+                      "kind": "repeat",
+                      "times": 3,
+                      "counter": "i",
+                      "body": [
+                        { "id": "s26", "kind": "set", "signal": "led_egal", "value": 1 },
+                        { "id": "s27", "kind": "delay", "ms": 500 },
+                        { "id": "s28", "kind": "set", "signal": "led_egal", "value": 0 },
+                        { "id": "s29", "kind": "delay", "ms": 500 }
+                      ]
+                    }
+                  ],
+                  "comment": "Test du bit Zero, var1 = var2",
+                  "note": "var1= var2"
+                },
+                {
+                  "id": "b5",
+                  "cond": { "kind": "flag", "flag": "C", "value": 1 },
+                  "body": [
+                    {
+                      "id": "s30",
+                      "kind": "display",
+                      "bus": "afficheur",
+                      "value": { "kind": "num", "value": 10, "radix": 16 },
+                      "comment": "Afficher la lettre 'A'"
+                    },
+                    { "id": "s31", "kind": "delay", "ms": 500 }
+                  ],
+                  "comment": "Test du Carry, var1 > var2",
+                  "note": "var1> var2"
+                }
+              ],
+              "otherwise": {
+                "id": "b6",
+                "body": [
+                  {
+                    "id": "s32",
+                    "kind": "display",
+                    "bus": "afficheur",
+                    "value": { "kind": "num", "value": 11, "radix": 16 },
+                    "comment": "Afficher la lettre 'B'"
+                  },
+                  { "id": "s33", "kind": "delay", "ms": 500 }
+                ],
+                "comment": "var1 < var2",
+                "note": "var1<var2"
+              }
+            },
+            {
+              "id": "s34",
+              "kind": "assign",
+              "target": { "kind": "var", "name": "var1" },
+              "value": { "kind": "num", "value": 0 }
+            },
+            {
+              "id": "s35",
+              "kind": "assign",
+              "target": { "kind": "var", "name": "var2" },
+              "value": { "kind": "num", "value": 0 },
+              "comment": "Nouveau cycle de vote"
+            },
+            {
+              "id": "s36",
+              "kind": "waitFor",
+              "cond": { "kind": "pin", "signal": "resultat", "value": 0 },
+              "comment": "Attente du relâchement du bouton"
+            }
+          ]
+        }
+      ],
+      "otherwise": null
+    }
+  ],
+  "functions": []
+}

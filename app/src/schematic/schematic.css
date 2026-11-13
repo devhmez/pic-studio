@@ -1,0 +1,143 @@
+/* Schematic panel. The sheet itself uses the ISIS palette (from @pic/circuit); the chrome uses the app tokens. */
+
+.sch-panel { display: flex; min-height: 0; min-width: 0; height: 100%; }
+
+/* ---------------------------------------------------------------- header actions */
+
+.sch-header-group { display: inline-flex; align-items: center; gap: 1px; padding: 0 4px; border-right: 1px solid var(--line); }
+.sch-header-group:last-of-type { border-right: 0; }
+.sch-header-button:disabled { color: var(--faint); opacity: .5; cursor: default; background: transparent; }
+.sch-header-button.is-pressed { background: var(--accent-soft); color: var(--accent); }
+.sch-lock-badge {
+  display: inline-flex; align-items: center; gap: 4px; margin-right: 4px; padding: 1px 8px; border-radius: 999px;
+  background: var(--warning-soft); color: var(--warning); font-size: var(--fs-xs); font-weight: 600; white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- palette */
+
+.sch-palette {
+  flex: none; width: 200px; display: flex; flex-direction: column; min-height: 0;
+  border-right: 1px solid var(--line); background: var(--surface-2);
+}
+.palette-search { display: flex; align-items: center; gap: 6px; padding: 8px 6px 8px 10px; color: var(--faint); border-bottom: 1px solid var(--line); }
+.palette-search input {
+  flex: 1; min-width: 0; height: 26px; padding: 0 8px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); font-size: var(--fs-sm); outline: none;
+}
+.palette-search input:focus { border-color: var(--accent); }
+.palette-note { display: flex; align-items: center; gap: 4px; margin: 6px 10px 0; color: var(--warning); font-size: var(--fs-xs); }
+.palette-scroll { flex: 1; overflow-y: auto; padding: 4px 6px 10px; }
+.palette-group { margin: 10px 6px 4px; color: var(--faint); font-size: var(--fs-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.sch-palette ul { margin: 0; padding: 0; list-style: none; }
+.palette-item {
+  display: flex; align-items: center; gap: 8px; width: 100%; padding: 4px 6px; border: 1px solid transparent; border-radius: var(--radius);
+  background: transparent; text-align: left; cursor: grab;
+}
+.palette-item:hover:not(:disabled) { background: var(--surface-hover); }
+.palette-item.is-active { border-color: var(--accent); background: var(--accent-soft); }
+.palette-item:disabled { opacity: .45; cursor: default; }
+.palette-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+.palette-item .symbol-thumb {
+  flex: none; padding: 2px; border-radius: 4px; background: #E0E0D0; /* ISIS sheet colour behind the symbol */
+}
+.symbol-thumb * { vector-effect: non-scaling-stroke; stroke-width: 1px; }
+.palette-text { display: flex; flex-direction: column; min-width: 0; }
+.palette-label { font-size: var(--fs-sm); color: var(--text); line-height: 1.2; }
+.palette-isis { font-size: 10px; color: var(--faint); font-family: var(--font-mono); line-height: 1.3; }
+.palette-empty { margin: 12px; color: var(--muted); font-size: var(--fs-sm); }
+
+/* ---------------------------------------------------------------- canvas */
+
+.sch-canvas-wrap {
+  position: relative; flex: 1; min-width: 0; min-height: 0; overflow: hidden; outline: none;
+  background: #E0E0D0; /* ISIS sheet */
+  touch-action: none; user-select: none; -webkit-user-select: none;
+}
+.sch-canvas-wrap:focus-visible { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 60%, transparent); }
+.sch-canvas { display: block; position: absolute; inset: 0; }
+.sch-canvas-wrap[data-cursor='grab'] { cursor: grab; }
+.sch-canvas-wrap[data-cursor='grabbing'] { cursor: grabbing; }
+.sch-canvas-wrap[data-cursor='crosshair'] { cursor: crosshair; }
+.sch-canvas-wrap[data-cursor='pointer'] { cursor: pointer; }
+.sch-canvas-wrap[data-cursor='move'] { cursor: move; }
+.sch-canvas-wrap[data-cursor='copy'] { cursor: copy; }
+.sch-canvas-wrap.tool-wire { cursor: crosshair; }
+
+/* Thin ISIS lines stay at least one device pixel wide whatever the zoom. */
+.sch-canvas [stroke]:not([stroke='none']) { stroke-width: max(var(--sw, 0.08px), calc(1px / var(--zoom))); }
+.sch-canvas .sch-wire { stroke-width: max(0.1px, calc(1.2px / var(--zoom))); stroke-linejoin: round; stroke-linecap: round; }
+.sch-canvas text { pointer-events: none; }
+
+.sch-selected-part { fill: color-mix(in srgb, var(--accent) 8%, transparent); stroke: var(--accent); stroke-width: calc(1.5px / var(--zoom)) !important; stroke-dasharray: calc(4px / var(--zoom)) calc(3px / var(--zoom)); }
+.sch-selected-wire { fill: none; stroke: var(--accent); stroke-opacity: .55; stroke-width: calc(5px / var(--zoom)) !important; stroke-linecap: round; stroke-linejoin: round; }
+.sch-marquee { fill: color-mix(in srgb, var(--accent) 10%, transparent); stroke: var(--accent); stroke-width: calc(1px / var(--zoom)) !important; stroke-dasharray: calc(4px / var(--zoom)) calc(3px / var(--zoom)); }
+.sch-hover-point { fill: none; stroke: var(--accent); stroke-width: calc(2px / var(--zoom)) !important; }
+.sch-draft polyline { fill: none; stroke: var(--accent); stroke-width: calc(2px / var(--zoom)) !important; stroke-dasharray: calc(6px / var(--zoom)) calc(4px / var(--zoom)); stroke-linejoin: round; }
+.sch-draft circle { fill: var(--accent); }
+.sch-ghost { opacity: .55; pointer-events: none; }
+.sch-ghost.is-refused { opacity: .25; }
+.sch-dangling circle { fill: #FFF3C4; stroke: #C2410C; stroke-width: calc(1.5px / var(--zoom)) !important; }
+.sch-dangling path { stroke: #C2410C; stroke-width: calc(2px / var(--zoom)) !important; stroke-linecap: round; fill: none; }
+
+/* ---------------------------------------------------------------- overlays (HTML over the sheet) */
+
+.sch-ldr-slider {
+  position: absolute; z-index: 5; display: flex; align-items: center; gap: 4px; padding: 1px 7px; transform: translate(-100%, -50%);
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface); box-shadow: var(--shadow);
+  font-size: var(--fs-xs); color: var(--muted); line-height: 1;
+}
+.sch-ldr-slider input { width: 72px; height: 16px; margin: 0; accent-color: var(--accent); }
+.sch-ldr-slider output { min-width: 1ch; font-variant-numeric: tabular-nums; color: var(--text); }
+.sch-ldr-icon { color: #d4a017; }
+
+.sch-popover {
+  position: absolute; z-index: 10; display: flex; flex-direction: column; gap: 10px; padding: 12px;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow);
+  font-size: var(--fs-sm); color: var(--text); user-select: text;
+}
+.sch-popover-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.sch-popover-title { font-weight: 600; }
+.sch-popover-sub { color: var(--faint); font-family: var(--font-mono); font-size: var(--fs-xs); }
+.sch-popover-note { display: flex; align-items: center; gap: 4px; margin: 0; color: var(--warning); font-size: var(--fs-xs); }
+.sch-field { display: flex; flex-direction: column; gap: 4px; }
+.sch-field-label { color: var(--muted); font-size: var(--fs-xs); }
+.sch-field input[type='text'], .sch-field select {
+  height: 28px; padding: 0 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); outline: none;
+}
+.sch-field input[type='text']:focus, .sch-field select:focus { border-color: var(--accent); }
+.sch-field input[aria-invalid='true'] { border-color: var(--danger); }
+.sch-field input[type='range'] { accent-color: var(--accent); }
+.sch-field-error { color: var(--danger); font-size: var(--fs-xs); }
+.sch-field-hint { color: var(--faint); font-size: var(--fs-xs); }
+.sch-field-static { font-family: var(--font-mono); font-size: var(--fs-xs); }
+.sch-segmented { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2); align-self: flex-start; }
+.sch-segmented button {
+  min-width: 32px; height: 24px; padding: 0 8px; border: 0; border-radius: 4px; background: transparent; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums;
+}
+.sch-segmented button:hover:not(:disabled) { background: var(--surface-hover); }
+.sch-segmented button.is-on { background: var(--surface); box-shadow: 0 0 0 1px var(--line-strong); font-weight: 600; }
+.sch-segmented button:disabled { opacity: .5; cursor: default; }
+.sch-swatch { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, .25); }
+.sch-swatch.led-red, .sch-swatch.seg-red { background: #FF2020; }
+.sch-swatch.led-green, .sch-swatch.seg-green { background: #20D020; }
+.sch-swatch.led-blue, .sch-swatch.seg-blue { background: #3030FF; }
+.sch-swatch.led-yellow { background: #F5E020; }
+.sch-popover-actions { display: flex; flex-wrap: wrap; gap: 2px; padding-top: 8px; border-top: 1px solid var(--line); }
+.sch-popover-actions .tool-button { height: 26px; padding: 0 6px; font-size: var(--fs-sm); }
+.sch-popover-actions .danger:not(:disabled) { color: var(--danger); }
+
+.sch-tool-hint {
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 4; max-width: calc(100% - 24px);
+  padding: 5px 12px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--muted); font-size: var(--fs-xs);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none;
+}
+
+/* Keyboard targets over the LOGICSTATEs and BUTTONs while simulating (see ActuatorButtons.tsx): invisible and
+   transparent to the mouse, outlined when focused from the keyboard. */
+.sch-actuators { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+.sch-actuator {
+  position: absolute; padding: 0; border: 0; border-radius: 4px; background: transparent; pointer-events: none;
+}
+.sch-actuator:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

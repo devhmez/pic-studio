@@ -1,0 +1,13 @@
+{
+  "name": "@pic/circuit",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./api": "./src/api.ts"
+  },
+  "dependencies": {
+    "@pic/emulator": "0.0.0"
+  }
+}

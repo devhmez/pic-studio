@@ -1,0 +1,235 @@
+{
+  "version": 1,
+  "title": "TP2 — Pupitre de jeu",
+  "description": "QCM de 8 questions sur RB0 à RB7 : après DEMARRER (RA4), VALIDER (RA0) compare les réponses à 0xCA ; YES ou NO pendant 3 s, GAME OVER après trois essais faux. Pour rejouer, remettre DEMARRER à 0 puis à 1 : l’interrupteur reste à 1 tant qu’on ne le baisse pas.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": true,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "valider",
+      "name": "VALIDER",
+      "pin": "RA0",
+      "dir": "in",
+      "label": "Bouton Valider",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "VALIDER"
+    },
+    {
+      "id": "demarrer",
+      "name": "DEMARRER",
+      "pin": "RA4",
+      "dir": "in",
+      "label": "Interrupteur Démarrer",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "DEMARRER"
+    },
+    {
+      "id": "led_game_over",
+      "name": "LED_GAME_OVER",
+      "pin": "RA1",
+      "dir": "out",
+      "label": "Led GAME OVER",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D4",
+      "comment": "LED bleue"
+    },
+    {
+      "id": "led_no",
+      "name": "LED_NO",
+      "pin": "RA2",
+      "dir": "out",
+      "label": "Led NO",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D2",
+      "comment": "LED rouge"
+    },
+    {
+      "id": "led_yes",
+      "name": "LED_YES",
+      "pin": "RA3",
+      "dir": "out",
+      "label": "Led YES",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D3",
+      "comment": "LED verte"
+    }
+  ],
+  "buses": [
+    {
+      "id": "reponses",
+      "name": "REPONSES",
+      "port": "B",
+      "lsb": 0,
+      "width": 8,
+      "dir": "in",
+      "label": "Réponses Q0 à Q7",
+      "device": "generic",
+      "comment": "Q0..Q7 sur RB0..RB7"
+    }
+  ],
+  "constants": [
+    {
+      "name": "REPONSE_CORRECTE",
+      "value": 202,
+      "radix": 16,
+      "comment": "Réponses attendues : Q7..Q0 = 1 1 0 0 1 0 1 0"
+    }
+  ],
+  "variables": [
+    { "name": "essais", "type": "unsigned char" },
+    { "name": "reussi", "type": "unsigned char" }
+  ],
+  "init": [
+    { "id": "s1", "kind": "set", "signal": "led_game_over", "value": 0 },
+    { "id": "s2", "kind": "set", "signal": "led_no", "value": 0 },
+    { "id": "s3", "kind": "set", "signal": "led_yes", "value": 0 }
+  ],
+  "loop": [
+    {
+      "id": "s4",
+      "kind": "waitFor",
+      "cond": { "kind": "pin", "signal": "demarrer", "value": 1 },
+      "comment": "Attente du démarrage"
+    },
+    {
+      "id": "s5",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "essais" },
+      "value": { "kind": "num", "value": 3 }
+    },
+    {
+      "id": "s6",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "reussi" },
+      "value": { "kind": "num", "value": 0 }
+    },
+    {
+      "id": "s7",
+      "kind": "while",
+      "cond": {
+        "kind": "and",
+        "items": [
+          {
+            "kind": "compare",
+            "left": { "kind": "var", "name": "essais" },
+            "op": ">",
+            "right": { "kind": "num", "value": 0 }
+          },
+          {
+            "kind": "compare",
+            "left": { "kind": "var", "name": "reussi" },
+            "op": "==",
+            "right": { "kind": "num", "value": 0 }
+          }
+        ]
+      },
+      "body": [
+        {
+          "id": "s8",
+          "kind": "waitFor",
+          "cond": { "kind": "pin", "signal": "valider", "value": 1 },
+          "comment": "Attente de la validation"
+        },
+        {
+          "id": "s9",
+          "kind": "if",
+          "branches": [
+            {
+              "id": "b1",
+              "cond": {
+                "kind": "compare",
+                "left": { "kind": "bus", "id": "reponses" },
+                "op": "==",
+                "right": { "kind": "var", "name": "REPONSE_CORRECTE" }
+              },
+              "body": [
+                {
+                  "id": "s10",
+                  "kind": "set",
+                  "signal": "led_yes",
+                  "value": 1,
+                  "lead": "Toutes les réponses sont correctes"
+                },
+                { "id": "s11", "kind": "delay", "ms": 3000 },
+                { "id": "s12", "kind": "set", "signal": "led_yes", "value": 0 },
+                {
+                  "id": "s13",
+                  "kind": "assign",
+                  "target": { "kind": "var", "name": "reussi" },
+                  "value": { "kind": "num", "value": 1 }
+                }
+              ],
+              "note": "Réponses correctes"
+            }
+          ],
+          "otherwise": {
+            "id": "b2",
+            "body": [
+              {
+                "id": "s14",
+                "kind": "set",
+                "signal": "led_no",
+                "value": 1,
+                "lead": "Erreur : un essai de moins"
+              },
+              { "id": "s15", "kind": "delay", "ms": 3000 },
+              { "id": "s16", "kind": "set", "signal": "led_no", "value": 0 },
+              { "id": "s17", "kind": "decr", "variable": "essais" }
+            ],
+            "note": "Réponses fausses"
+          }
+        },
+        {
+          "id": "s18",
+          "kind": "waitFor",
+          "cond": { "kind": "pin", "signal": "valider", "value": 0 },
+          "comment": "Attente du relâchement du bouton"
+        }
+      ],
+      "lead": "Trois essais au maximum"
+    },
+    {
+      "id": "s19",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b3",
+          "cond": {
+            "kind": "compare",
+            "left": { "kind": "var", "name": "reussi" },
+            "op": "==",
+            "right": { "kind": "num", "value": 0 }
+          },
+          "body": [
+            { "id": "s20", "kind": "set", "signal": "led_game_over", "value": 1 },
+            { "id": "s21", "kind": "delay", "ms": 3000 },
+            { "id": "s22", "kind": "set", "signal": "led_game_over", "value": 0 }
+          ]
+        }
+      ],
+      "otherwise": null,
+      "lead": "Trois essais infructueux : GAME OVER"
+    },
+    {
+      "id": "s23",
+      "kind": "waitFor",
+      "cond": { "kind": "pin", "signal": "demarrer", "value": 0 },
+      "comment": "Attente de la remise à 0 de DEMARRER"
+    }
+  ],
+  "functions": []
+}

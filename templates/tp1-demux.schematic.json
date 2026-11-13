@@ -1,0 +1,198 @@
+{
+  "name": "TP1 — Atelier Démultiplexeur 1 vers 4",
+  "source": "cours/tp demux.DSN",
+  "description": "RA0 ← LOGICSTATE (L0, 0), RA1 ← LOGICSTATE (L1, 1) ; RB0..RB3 → RES 220 → D1 LED-BLUE, D2 LED-GREEN, D3 LED-RED, D4 LED-YELLOW → GND. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": -30, "y": -20 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "D1",
+      "kind": "LED",
+      "ref": "D1",
+      "value": "LED-BLUE",
+      "at": { "x": 16, "y": 10 },
+      "rotation": 0,
+      "props": {
+        "color": "BLUE"
+      }
+    },
+    {
+      "id": "D2",
+      "kind": "LED",
+      "ref": "D2",
+      "value": "LED-GREEN",
+      "at": { "x": 9, "y": 10 },
+      "rotation": 0,
+      "props": {
+        "color": "GREEN"
+      }
+    },
+    {
+      "id": "D3",
+      "kind": "LED",
+      "ref": "D3",
+      "value": "LED-RED",
+      "at": { "x": 1, "y": 10 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "D4",
+      "kind": "LED",
+      "ref": "D4",
+      "value": "LED-YELLOW",
+      "at": { "x": -10, "y": 10 },
+      "rotation": 0,
+      "props": {
+        "color": "YELLOW"
+      }
+    },
+    {
+      "id": "R1",
+      "kind": "RES",
+      "ref": "R1",
+      "value": "220",
+      "at": { "x": -10, "y": 1 },
+      "rotation": 90,
+      "props": {}
+    },
+    {
+      "id": "R2",
+      "kind": "RES",
+      "ref": "R2",
+      "value": "220",
+      "at": { "x": -4, "y": -3 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R3",
+      "kind": "RES",
+      "ref": "R3",
+      "value": "220",
+      "at": { "x": -4, "y": -6 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R4",
+      "kind": "RES",
+      "ref": "R4",
+      "value": "220",
+      "at": { "x": -3, "y": -9 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 2, "y": 19 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "LS1",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 13, "y": -27 },
+      "rotation": 180,
+      "props": {
+        "state": 0
+      }
+    },
+    {
+      "id": "LS2",
+      "kind": "LOGICSTATE",
+      "ref": "",
+      "at": { "x": 17, "y": -23 },
+      "rotation": 180,
+      "props": {
+        "state": 1
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": -15, "y": -11 }, { "x": -14, "y": -11 }, { "x": -14, "y": -2 }, { "x": -10, "y": -2 }, { "x": -10, "y": -1 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": -10, "y": 8 }, { "x": -10, "y": 4 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": -15, "y": -12 }, { "x": -13, "y": -12 }, { "x": -13, "y": -3 }, { "x": -6, "y": -3 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 1, "y": 8 }, { "x": 1, "y": -3 }, { "x": -1, "y": -3 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": -15, "y": -13 }, { "x": -12, "y": -13 }, { "x": -12, "y": -6 }, { "x": -6, "y": -6 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 9, "y": 8 }, { "x": 9, "y": -6 }, { "x": -1, "y": -6 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": -15, "y": -14 }, { "x": -11, "y": -14 }, { "x": -11, "y": -9 }, { "x": -5, "y": -9 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 16, "y": 8 }, { "x": 16, "y": -9 }, { "x": 0, "y": -9 }]
+    },
+    {
+      "id": "W9",
+      "points": [{ "x": -15, "y": -20 }, { "x": -14, "y": -20 }, { "x": -14, "y": -27 }, { "x": 11, "y": -27 }]
+    },
+    {
+      "id": "W10",
+      "points": [{ "x": -15, "y": -19 }, { "x": -13, "y": -19 }, { "x": -13, "y": -23 }, { "x": 15, "y": -23 }]
+    },
+    {
+      "id": "W11",
+      "points": [{ "x": 16, "y": 12 }, { "x": 16, "y": 14 }, { "x": 9, "y": 14 }]
+    },
+    {
+      "id": "W12",
+      "points": [{ "x": 9, "y": 12 }, { "x": 9, "y": 14 }]
+    },
+    {
+      "id": "W13",
+      "points": [{ "x": -10, "y": 12 }, { "x": -10, "y": 14 }, { "x": 1, "y": 14 }]
+    },
+    {
+      "id": "W14",
+      "points": [{ "x": 1, "y": 12 }, { "x": 1, "y": 14 }]
+    },
+    {
+      "id": "W15",
+      "points": [{ "x": 1, "y": 14 }, { "x": 2, "y": 14 }]
+    },
+    {
+      "id": "W16",
+      "points": [{ "x": 9, "y": 14 }, { "x": 2, "y": 14 }]
+    },
+    {
+      "id": "W17",
+      "points": [{ "x": 2, "y": 18 }, { "x": 2, "y": 14 }]
+    }
+  ]
+}

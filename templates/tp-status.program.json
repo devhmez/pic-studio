@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "title": "TP — Manipulation du registre STATUS",
+  "description": "Compare x et y avec z = x - y et les drapeaux Z (égalité) et C (pas d’emprunt) du registre STATUS : une seule des trois LEDs s’allume.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "index",
+    "tris": { "A": "auto", "B": "port" },
+    "macros": true,
+    "sections": "status",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": true,
+    "packLines": true
+  },
+  "signals": [
+    {
+      "id": "led_sup",
+      "name": "LED_SUP",
+      "pin": "RB0",
+      "dir": "out",
+      "label": "Led supérieur",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "X_SUPERIEUR"
+    },
+    {
+      "id": "led_egal",
+      "name": "LED_EGAL",
+      "pin": "RB1",
+      "dir": "out",
+      "label": "Led égalité",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "EGALITE"
+    },
+    {
+      "id": "led_inf",
+      "name": "LED_INF",
+      "pin": "RB2",
+      "dir": "out",
+      "label": "Led inférieur",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "X_INFERIEUR"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [
+    { "name": "x", "type": "unsigned char" },
+    { "name": "y", "type": "unsigned char" },
+    { "name": "z", "type": "unsigned char" }
+  ],
+  "init": [
+    {
+      "id": "s1",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "x" },
+      "value": { "kind": "num", "value": 5 }
+    },
+    {
+      "id": "s2",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "y" },
+      "value": { "kind": "num", "value": 6 }
+    },
+    { "id": "s3", "kind": "set", "signal": "led_sup", "value": 0 },
+    { "id": "s4", "kind": "set", "signal": "led_egal", "value": 0 },
+    { "id": "s5", "kind": "set", "signal": "led_inf", "value": 0 },
+    {
+      "id": "s6",
+      "kind": "assign",
+      "target": { "kind": "reg", "name": "STATUS" },
+      "value": { "kind": "num", "value": 0 }
+    }
+  ],
+  "loop": [
+    { "id": "s7", "kind": "set", "signal": "led_sup", "value": 0 },
+    { "id": "s8", "kind": "set", "signal": "led_egal", "value": 0 },
+    { "id": "s9", "kind": "set", "signal": "led_inf", "value": 0 },
+    {
+      "id": "s10",
+      "kind": "assign",
+      "target": { "kind": "var", "name": "z" },
+      "value": {
+        "kind": "bin",
+        "op": "-",
+        "left": { "kind": "var", "name": "x" },
+        "right": { "kind": "var", "name": "y" }
+      },
+      "comment": "Soustraction"
+    },
+    {
+      "id": "s11",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b1",
+          "cond": { "kind": "flag", "flag": "Z", "value": 1 },
+          "body": [{ "id": "s12", "kind": "set", "signal": "led_egal", "value": 1 }],
+          "comment": "Test du bit Zero, x = y",
+          "note": "x= y"
+        },
+        {
+          "id": "b2",
+          "cond": { "kind": "flag", "flag": "C", "value": 1 },
+          "body": [{ "id": "s13", "kind": "set", "signal": "led_sup", "value": 1 }],
+          "comment": "Test du Carry, x > y",
+          "note": "x> y"
+        }
+      ],
+      "otherwise": {
+        "id": "b3",
+        "body": [{ "id": "s14", "kind": "set", "signal": "led_inf", "value": 1 }],
+        "comment": "x < y",
+        "note": "x<y"
+      }
+    }
+  ],
+  "functions": []
+}

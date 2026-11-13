@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Completed by vite.config.ts: hash of the inline theme script in the build, relaxed rules on the dev server. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="PIC Studio — schéma, code C, assembleur et organigramme pour le PIC16F84A" />
+    <title>PIC Studio</title>
+    <script>
+      // Apply the saved theme before the first paint (no light flash in dark mode).
+      try {
+        var prefs = JSON.parse(localStorage.getItem('pic-studio.prefs.v1') || 'null');
+        if (prefs && (prefs.theme === 'light' || prefs.theme === 'dark')) document.documentElement.setAttribute('data-theme', prefs.theme);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

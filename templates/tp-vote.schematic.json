@@ -1,0 +1,249 @@
+{
+  "name": "TP — Boîtier électronique de vote (A / B)",
+  "source": "Énoncé_élection.pdf (pas de schéma fourni : montage reconstitué)",
+  "description": "Boutons « Vote A » RA0, « Vote B » RA1, « Résultat » RA3 (BUTTON vers +5 V, rappel 10k vers la masse) ; LED de confirmation RA2 ; 7SEG-BCD sur RB0..RB3 ; LED verte RB5. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": 0, "y": 0 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "VOTE_A",
+      "kind": "BUTTON",
+      "ref": "VOTE_A",
+      "at": { "x": 23, "y": 0 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR1",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 27, "y": -11 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R1",
+      "kind": "RES",
+      "ref": "R1",
+      "value": "10k",
+      "at": { "x": 20, "y": -4 },
+      "rotation": 270,
+      "props": {}
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 17, "y": -7 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "VOTE_B",
+      "kind": "BUTTON",
+      "ref": "VOTE_B",
+      "at": { "x": 36, "y": 1 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR2",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 40, "y": -11 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R2",
+      "kind": "RES",
+      "ref": "R2",
+      "value": "10k",
+      "at": { "x": 33, "y": -3 },
+      "rotation": 270,
+      "props": {}
+    },
+    {
+      "id": "GND2",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 30, "y": -7 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "CONFIRMATION",
+      "kind": "LED",
+      "ref": "CONFIRMATION",
+      "value": "LED-YELLOW",
+      "at": { "x": 49, "y": -3 },
+      "rotation": 270,
+      "props": {
+        "color": "YELLOW"
+      }
+    },
+    {
+      "id": "GND3",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 53, "y": -3 },
+      "rotation": 270,
+      "props": {}
+    },
+    {
+      "id": "RESULTAT",
+      "kind": "BUTTON",
+      "ref": "RESULTAT",
+      "at": { "x": 62, "y": 3 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PWR3",
+      "kind": "POWER",
+      "ref": "",
+      "at": { "x": 66, "y": -11 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "R3",
+      "kind": "RES",
+      "ref": "R3",
+      "value": "10k",
+      "at": { "x": 59, "y": -1 },
+      "rotation": 270,
+      "props": {}
+    },
+    {
+      "id": "GND4",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 56, "y": -7 },
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "SEG1",
+      "kind": "7SEG-BCD",
+      "ref": "",
+      "at": { "x": 70, "y": -6 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "EGALITE",
+      "kind": "LED",
+      "ref": "EGALITE",
+      "value": "LED-GREEN",
+      "at": { "x": 20, "y": 15 },
+      "rotation": 0,
+      "props": {
+        "color": "GREEN"
+      }
+    },
+    {
+      "id": "GND5",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 20, "y": 20 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 15, "y": 0 }, { "x": 20.5, "y": 0 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 25.5, "y": 0 }, { "x": 27, "y": 0 }, { "x": 27, "y": -10 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 20, "y": -2 }, { "x": 20, "y": 0 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 20, "y": -7 }, { "x": 20, "y": -9 }, { "x": 17, "y": -9 }, { "x": 17, "y": -8 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 15, "y": 1 }, { "x": 33.5, "y": 1 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 38.5, "y": 1 }, { "x": 40, "y": 1 }, { "x": 40, "y": -10 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 33, "y": -1 }, { "x": 33, "y": 1 }]
+    },
+    {
+      "id": "W8",
+      "points": [{ "x": 33, "y": -6 }, { "x": 33, "y": -9 }, { "x": 30, "y": -9 }, { "x": 30, "y": -8 }]
+    },
+    {
+      "id": "W9",
+      "points": [{ "x": 15, "y": 2 }, { "x": 46, "y": 2 }, { "x": 46, "y": -3 }, { "x": 47, "y": -3 }]
+    },
+    {
+      "id": "W10",
+      "points": [{ "x": 51, "y": -3 }, { "x": 52, "y": -3 }]
+    },
+    {
+      "id": "W11",
+      "points": [{ "x": 15, "y": 3 }, { "x": 59.5, "y": 3 }]
+    },
+    {
+      "id": "W12",
+      "points": [{ "x": 64.5, "y": 3 }, { "x": 66, "y": 3 }, { "x": 66, "y": -10 }]
+    },
+    {
+      "id": "W13",
+      "points": [{ "x": 59, "y": 1 }, { "x": 59, "y": 3 }]
+    },
+    {
+      "id": "W14",
+      "points": [{ "x": 59, "y": -4 }, { "x": 59, "y": -9 }, { "x": 56, "y": -9 }, { "x": 56, "y": -8 }]
+    },
+    {
+      "id": "W15",
+      "points": [{ "x": 15, "y": 6 }, { "x": 75.5, "y": 6 }, { "x": 75.5, "y": 4.5 }]
+    },
+    {
+      "id": "W16",
+      "points": [{ "x": 15, "y": 7 }, { "x": 74, "y": 7 }, { "x": 74, "y": 4.5 }]
+    },
+    {
+      "id": "W17",
+      "points": [{ "x": 15, "y": 8 }, { "x": 72.5, "y": 8 }, { "x": 72.5, "y": 4.5 }]
+    },
+    {
+      "id": "W18",
+      "points": [{ "x": 15, "y": 9 }, { "x": 71, "y": 9 }, { "x": 71, "y": 4.5 }]
+    },
+    {
+      "id": "W19",
+      "points": [{ "x": 15, "y": 11 }, { "x": 20, "y": 11 }, { "x": 20, "y": 13 }]
+    },
+    {
+      "id": "W20",
+      "points": [{ "x": 20, "y": 17 }, { "x": 20, "y": 19 }]
+    }
+  ]
+}

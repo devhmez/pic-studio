@@ -1,0 +1,132 @@
+[
+  {
+    "id": "tp0-exemple1",
+    "title": "TP0 — Exemple 1 : allumer une LED (RA0)",
+    "chapter": 1,
+    "description": "La LED bleue branchée sur RA0 s’allume au démarrage ; le programme se termine ensuite.",
+    "schematic": "tp0-exemple1.schematic.json",
+    "program": "tp0-exemple1.program.json",
+    "source": "tp0-exemple1.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp0-exemple2",
+    "title": "TP0 — Exemple 2 : commander une LED par un bouton",
+    "chapter": 1,
+    "description": "La LED verte (RA0) recopie l’état de l’interrupteur LOGICSTATE branché sur RB0.",
+    "schematic": "tp0-exemple2.schematic.json",
+    "program": "tp0-exemple2.program.json",
+    "source": "tp0-exemple2.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp1-demux",
+    "title": "Atelier — Démultiplexeur 1 vers 4",
+    "chapter": 2,
+    "description": "Deux interrupteurs L1 L0 (RA1, RA0) choisissent laquelle des quatre LEDs D0 à D3 (RB0 à RB3) est allumée, selon la table de vérité de l’énoncé.",
+    "schematic": "tp1-demux.schematic.json",
+    "program": "tp1-demux.program.json",
+    "source": "tp1-demux.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp-status",
+    "title": "TP — Manipulation du registre STATUS",
+    "chapter": 3,
+    "description": "Compare x et y avec z = x - y et les drapeaux Z (égalité) et C (pas d’emprunt) du registre STATUS : une seule des trois LEDs s’allume.",
+    "schematic": "tp-status.schematic.json",
+    "program": "tp-status.program.json",
+    "source": "tp-status.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp-vote",
+    "title": "TP — Boîtier électronique de vote (A / B)",
+    "chapter": 3,
+    "description": "Compte les votes A (RA0) et B (RA1) avec un clignotement de confirmation (RA2) ; « Résultat » (RA3) affiche A, B ou E (égalité, LED verte RB5) sur l’afficheur 7 segments BCD.",
+    "schematic": "tp-vote.schematic.json",
+    "program": "tp-vote.program.json",
+    "source": "tp-vote.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp-traffic",
+    "title": "TP — Feu tricolore",
+    "chapter": 4,
+    "description": "Le capteur de luminosité (RA3) choisit le mode : nuit, orange clignotant et « A » affiché ; jour, cycle rouge, orange, vert avec un décompte chaque seconde sur l’afficheur. Choix à connaître : l’orange affiche 2, 1, 0 pendant 1 s chacun, soit 3 s (l’énoncé dit « 2 secondes ») ; le capteur n’est lu qu’au début de chaque cycle, donc le mode nuit attend la fin du cycle de jour en cours.",
+    "schematic": "tp-traffic.schematic.json",
+    "program": "tp-traffic.program.json",
+    "source": "tp-traffic.c",
+    "clockHz": 8000000
+  },
+  {
+    "id": "tp-pupitre",
+    "title": "TP2 — Pupitre de jeu",
+    "chapter": 4,
+    "description": "QCM de 8 questions sur RB0 à RB7 : après DEMARRER (RA4), VALIDER (RA0) compare les réponses à 0xCA ; YES ou NO pendant 3 s, GAME OVER après trois essais faux. Pour rejouer, remettre DEMARRER à 0 puis à 1 : l’interrupteur reste à 1 tant qu’on ne le baisse pas.",
+    "schematic": "tp-pupitre.schematic.json",
+    "program": "tp-pupitre.program.json",
+    "source": "tp-pupitre.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp4-inte",
+    "title": "TP4 — Interruption INTE",
+    "chapter": 5,
+    "description": "Le compteur affiche 0 à 9 sur l’afficheur 7 segments BCD (RA0 à RA3), un chiffre toutes les 500 ms. Chaque appui sur le bouton (RB0/INT, front montant) déclenche l’interruption : la LED rouge (RB3) clignote 3 fois, puis le compteur reprend exactement où il s’était arrêté.",
+    "schematic": "tp4-inte.schematic.json",
+    "program": "tp4-inte.program.json",
+    "source": "tp4-inte.c",
+    "clockHz": 8000000
+  },
+  {
+    "id": "ch5-manip-rb0",
+    "title": "Manipulation — Interruption RB0 (LEDs RA1 et RA2)",
+    "chapter": 5,
+    "description": "Au repos, la LED rouge (RA1) est éteinte et la LED verte (RA2) clignote, 4 fois par tour de boucle. Un appui sur le bouton (RB0/INT, front montant) éteint la verte et fait clignoter la rouge 2 fois, puis le programme revient au fonctionnement principal.",
+    "schematic": "ch5-manip-rb0.schematic.json",
+    "program": "ch5-manip-rb0.program.json",
+    "source": "ch5-manip-rb0.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp-traffic-int",
+    "title": "Feu tricolore avec interruption (montage trafficint)",
+    "chapter": 5,
+    "description": "Montage du prof trafficint.DSN (énoncé non fourni : comportement reconstitué). Le programme principal fait le cycle de jour : rouge 9 à 0, orange 2 à 0, vert 9 à 0, une seconde par chiffre. Quand le capteur (LOGICSTATE sur RB0/INT) passe de 1 à 0 (front descendant), l’interruption fait le mode nuit : orange clignotant et « A » affiché tant que le capteur reste à 0, puis le cycle reprend où il s’était arrêté (les feux sont réécrits chaque seconde). Au démarrage, mettre le capteur à 1 (jour).",
+    "schematic": "tp-traffic-int.schematic.json",
+    "program": "tp-traffic-int.program.json",
+    "source": "tp-traffic-int.c",
+    "clockHz": 8000000
+  },
+  {
+    "id": "tp5-int-rb0",
+    "title": "Ch5 — Interruption externe RB0/INT",
+    "chapter": 5,
+    "description": "Chaque appui sur le bouton (RB0/INT, front montant) déclenche l’interruption qui inverse la LED rouge (RB1) ; pendant ce temps, la boucle principale fait clignoter la LED verte (RB2) toutes les 500 ms.",
+    "schematic": "tp5-int-rb0.schematic.json",
+    "program": "tp5-int-rb0.program.json",
+    "source": "tp5-int-rb0.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "ch6-exo-rbie",
+    "title": "Exercice — Compteur 0 à 9 et boutons RB4 à RB7",
+    "chapter": 6,
+    "description": "Le compteur affiche 0 à 9 (RA0 à RA3), un chiffre toutes les 500 ms. Un appui sur un des boutons B4 à B7 (RB4 à RB7) déclenche l’interruption RBIE : le numéro du bouton (4 à 7) s’affiche pendant 500 ms, puis le compteur reprend. Le relâchement du bouton provoque une deuxième interruption qui ne fait rien (aucun bouton à 1).",
+    "schematic": "ch6-exo-rbie.schematic.json",
+    "program": "ch6-exo-rbie.program.json",
+    "source": "ch6-exo-rbie.c",
+    "clockHz": 1000000
+  },
+  {
+    "id": "tp6-rbie",
+    "title": "Ch6 — Interruption sur changement de RB4 à RB7",
+    "chapter": 6,
+    "description": "Au démarrage puis à chaque changement d’un des interrupteurs RB4 à RB7, leur état est recopié sur les LEDs RA0 à RA3 (l’interruption RBIE s’en charge après le démarrage) ; la boucle principale n’a rien à faire.",
+    "schematic": "tp6-rbie.schematic.json",
+    "program": "tp6-rbie.program.json",
+    "source": "tp6-rbie.c",
+    "clockHz": 1000000
+  }
+]

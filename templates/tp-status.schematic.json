@@ -1,0 +1,91 @@
+{
+  "name": "TP — Manipulation du registre STATUS",
+  "source": "cours/manipulation status.DSN",
+  "description": "RB0 → X_SUPERIEUR (LED-BLUE), RB1 → EGALITE (LED-GREEN), RB2 → X_INFERIEUR (LED-RED), cathodes → GND. Horloge 1 MHz.",
+  "clockHz": 1000000,
+  "components": [
+    {
+      "id": "U1",
+      "kind": "PIC16F84A",
+      "ref": "U1",
+      "value": "PIC16F84A",
+      "at": { "x": -13, "y": -14 },
+      "rotation": 0,
+      "props": {
+        "clock": "1MHz",
+        "cfgword": "0x3FFB"
+      }
+    },
+    {
+      "id": "X_SUPERIEUR",
+      "kind": "LED",
+      "ref": "X_SUPERIEUR",
+      "value": "LED-BLUE",
+      "at": { "x": 30, "y": -2 },
+      "rotation": 0,
+      "props": {
+        "color": "BLUE"
+      }
+    },
+    {
+      "id": "EGALITE",
+      "kind": "LED",
+      "ref": "EGALITE",
+      "value": "LED-GREEN",
+      "at": { "x": 21, "y": -2 },
+      "rotation": 0,
+      "props": {
+        "color": "GREEN"
+      }
+    },
+    {
+      "id": "X_INFERIEUR",
+      "kind": "LED",
+      "ref": "X_INFERIEUR",
+      "value": "LED-RED",
+      "at": { "x": 9, "y": -2 },
+      "rotation": 0,
+      "props": {
+        "color": "RED"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "GROUND",
+      "ref": "",
+      "at": { "x": 21, "y": 7 },
+      "rotation": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "points": [{ "x": 2, "y": -8 }, { "x": 30, "y": -8 }, { "x": 30, "y": -4 }]
+    },
+    {
+      "id": "W2",
+      "points": [{ "x": 2, "y": -7 }, { "x": 21, "y": -7 }, { "x": 21, "y": -4 }]
+    },
+    {
+      "id": "W3",
+      "points": [{ "x": 2, "y": -6 }, { "x": 9, "y": -6 }, { "x": 9, "y": -4 }]
+    },
+    {
+      "id": "W4",
+      "points": [{ "x": 9, "y": 0 }, { "x": 9, "y": 5 }, { "x": 21, "y": 5 }]
+    },
+    {
+      "id": "W5",
+      "points": [{ "x": 21, "y": 6 }, { "x": 21, "y": 5 }]
+    },
+    {
+      "id": "W6",
+      "points": [{ "x": 21, "y": 0 }, { "x": 21, "y": 5 }]
+    },
+    {
+      "id": "W7",
+      "points": [{ "x": 30, "y": 0 }, { "x": 30, "y": 5 }, { "x": 21, "y": 5 }]
+    }
+  ]
+}

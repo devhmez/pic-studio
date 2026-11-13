@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "title": "Manipulation — Interruption RB0 (LEDs RA1 et RA2)",
+  "description": "Au repos, la LED rouge (RA1) est éteinte et la LED verte (RA2) clignote, 4 fois par tour de boucle. Un appui sur le bouton (RB0/INT, front montant) éteint la verte et fait clignoter la rouge 2 fois, puis le programme revient au fonctionnement principal.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": true,
+    "sections": "demux",
+    "compactAssign": false,
+    "echoRegister": false,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "bouton",
+      "name": "BOUTON",
+      "pin": "RB0",
+      "dir": "in",
+      "label": "Bouton",
+      "activeLevel": 1,
+      "device": "button",
+      "componentId": "BOUTON"
+    },
+    {
+      "id": "led_rouge",
+      "name": "LED_ROUGE",
+      "pin": "RA1",
+      "dir": "out",
+      "label": "Led rouge",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    },
+    {
+      "id": "led_verte",
+      "name": "LED_VERTE",
+      "pin": "RA2",
+      "dir": "out",
+      "label": "Led verte",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D2"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [{ "name": "j", "type": "unsigned char" }, { "name": "i", "type": "unsigned char" }],
+  "interrupts": { "int": { "edge": "rising" }, "gie": true },
+  "init": [
+    { "id": "s1", "kind": "set", "signal": "led_rouge", "value": 0 },
+    { "id": "s2", "kind": "set", "signal": "led_verte", "value": 0 }
+  ],
+  "loop": [
+    {
+      "id": "s3",
+      "kind": "repeat",
+      "times": 4,
+      "counter": "i",
+      "body": [
+        { "id": "s4", "kind": "set", "signal": "led_verte", "value": 1 },
+        { "id": "s5", "kind": "delay", "ms": 500 },
+        { "id": "s6", "kind": "set", "signal": "led_verte", "value": 0 },
+        { "id": "s7", "kind": "delay", "ms": 500 }
+      ],
+      "lead": "La LED verte clignote 4 fois"
+    }
+  ],
+  "functions": [
+    {
+      "id": "f1",
+      "name": "interrupt",
+      "kind": "interrupt",
+      "body": [
+        {
+          "id": "s8",
+          "kind": "if",
+          "branches": [
+            {
+              "id": "b1",
+              "cond": { "kind": "flag", "flag": "INTF", "value": 1 },
+              "body": [
+                {
+                  "id": "s9",
+                  "kind": "set",
+                  "signal": "led_verte",
+                  "value": 0,
+                  "lead": "Éteindre la LED verte pendant le traitement"
+                },
+                {
+                  "id": "s10",
+                  "kind": "repeat",
+                  "times": 2,
+                  "counter": "j",
+                  "body": [
+                    { "id": "s11", "kind": "set", "signal": "led_rouge", "value": 1 },
+                    { "id": "s12", "kind": "delay", "ms": 500 },
+                    { "id": "s13", "kind": "set", "signal": "led_rouge", "value": 0 },
+                    { "id": "s14", "kind": "delay", "ms": 500 }
+                  ],
+                  "lead": "La LED rouge clignote 2 fois"
+                },
+                {
+                  "id": "s15",
+                  "kind": "clearFlag",
+                  "flag": "INTF",
+                  "comment": "Effacer le drapeau INTF"
+                }
+              ],
+              "comment": "Interruption RB0/INT"
+            }
+          ],
+          "otherwise": null
+        }
+      ],
+      "lead": "Programme d'interruption : appelé à chaque appui sur le bouton (front montant sur RB0/INT)"
+    }
+  ]
+}

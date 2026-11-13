@@ -1,0 +1,13 @@
+{
+  "name": "@pic/program-model",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pic/circuit": "0.0.0",
+    "@pic/compiler": "0.0.0"
+  }
+}

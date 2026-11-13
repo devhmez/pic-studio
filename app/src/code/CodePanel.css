@@ -1,0 +1,100 @@
+/* Code panel: editor area, syntax palette (light/dark), breakpoint gutter, execution line, problems strip. */
+
+.code-panel {
+  /* Syntax palette — classic embedded-IDE readability: bold keywords, green italic comments, coloured numbers. */
+  --syn-keyword: #1e3a8a;
+  --syn-type: #1e3a8a;
+  --syn-comment: #2e7d32;
+  --syn-number: #7e22ce;
+  --syn-string: #a14f05;
+  --syn-preproc: #6d28d9;
+  --syn-meta: var(--text);
+  --syn-macro: #8a4510;
+  --syn-function: #155e75;
+  --syn-sfr: #0b5f8a;
+  --syn-bit: #b0185a;
+  --syn-builtin: #0f766e;
+  --code-selection: #cde8e4;
+  --code-selection-match: rgba(15, 118, 110, .12);
+  --code-active-line: rgba(0, 0, 0, .028);
+  --code-exec-bg: var(--warning-soft);
+  --code-exec-line: var(--warning);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .code-panel {
+    --syn-keyword: #93c5fd; --syn-type: #93c5fd; --syn-comment: #8bc98e; --syn-number: #d8b4fe; --syn-string: #f5c07a;
+    --syn-preproc: #c4b5fd; --syn-macro: #fdba74; --syn-function: #67e8f9; --syn-sfr: #7dd3fc; --syn-bit: #f9a8d4;
+    --syn-builtin: #5eead4;
+    --code-selection: rgba(45, 212, 191, .24); --code-selection-match: rgba(45, 212, 191, .12);
+    --code-active-line: rgba(255, 255, 255, .035);
+  }
+}
+:root[data-theme='dark'] .code-panel {
+  --syn-keyword: #93c5fd; --syn-type: #93c5fd; --syn-comment: #8bc98e; --syn-number: #d8b4fe; --syn-string: #f5c07a;
+  --syn-preproc: #c4b5fd; --syn-macro: #fdba74; --syn-function: #67e8f9; --syn-sfr: #7dd3fc; --syn-bit: #f9a8d4;
+  --syn-builtin: #5eead4;
+  --code-selection: rgba(45, 212, 191, .24); --code-selection-match: rgba(45, 212, 191, .12);
+  --code-active-line: rgba(255, 255, 255, .035);
+}
+
+.code-editor { flex: 1; min-height: 0; overflow: hidden; }
+.code-editor .cm-editor { height: 100%; }
+
+/* MikroC overlay tokens. The `.cm-editor` prefix outranks the grammar's highlight classes. */
+.code-editor .cm-editor .cm-pic-sfr, .code-editor .cm-editor .cm-pic-sfr * { color: var(--syn-sfr); font-weight: 600; }
+.code-editor .cm-editor .cm-pic-bit, .code-editor .cm-editor .cm-pic-bit * { color: var(--syn-bit); font-weight: 600; }
+.code-editor .cm-editor .cm-pic-builtin, .code-editor .cm-editor .cm-pic-builtin * { color: var(--syn-builtin); font-weight: 600; }
+.code-editor .cm-editor .cm-pic-kw, .code-editor .cm-editor .cm-pic-kw * { color: var(--syn-keyword); font-weight: 700; }
+
+/* Breakpoint gutter */
+.code-editor .cm-pic-bp-gutter .cm-gutterElement { padding: 0 0 0 4px; }
+.code-editor .cm-pic-bp {
+  position: relative; width: 16px; height: 100%; min-height: 1em;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.code-editor .cm-pic-bp::before {
+  content: ''; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--pcx-bp); opacity: 0; transition: opacity .12s;
+}
+.code-editor .cm-pic-bp-gutter .cm-gutterElement:hover > .cm-pic-bp::before { opacity: .3; }
+.code-editor .cm-pic-bp-gutter .cm-gutterElement > .cm-pic-bp.is-set::before { opacity: 1; }
+.code-editor .cm-pic-exec-arrow {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--code-exec-line); font-size: 10px; line-height: 1;
+}
+.code-editor .cm-pic-bp.is-set .cm-pic-exec-arrow { color: var(--surface); font-size: 8px; }
+
+/* Current execution line */
+.code-editor .cm-line.cm-pic-exec-line { background: var(--code-exec-bg); box-shadow: inset 3px 0 0 var(--code-exec-line); }
+
+/* Header bits */
+.code-fontsize { min-width: 28px; font-size: var(--fs-xs); color: var(--muted); }
+
+/* Problems strip */
+.code-problems { flex-shrink: 0; border-top: 1px solid var(--line); background: var(--surface-2); font-size: var(--fs-sm); }
+.code-problems-head { display: flex; align-items: center; gap: var(--space-3); height: 26px; padding: 0 var(--space-3); overflow: hidden; white-space: nowrap; }
+.code-status { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.code-status svg { width: 14px; height: 14px; flex-shrink: 0; }
+.code-status.is-ok { color: var(--success); }
+.code-status.is-error { color: var(--danger); }
+.code-status.is-pending { color: var(--faint); }
+.code-status-count { color: var(--muted); font-weight: 400; }
+.code-status-count::before { content: '·'; margin-right: 6px; color: var(--faint); }
+.code-status-detail { color: var(--muted); font-weight: 400; white-space: nowrap; flex-shrink: 0; }
+.code-problems.is-stale .code-status { opacity: .6; }
+
+.code-problems-list { list-style: none; margin: 0; padding: 0 0 3px; max-height: 88px; overflow: auto; border-top: 1px solid var(--line); }
+.code-problem {
+  display: flex; align-items: baseline; gap: var(--space-2); width: 100%; padding: 2px var(--space-3);
+  border: 0; background: transparent; text-align: left; cursor: pointer; color: var(--text); min-width: 0;
+}
+.code-problem:hover { background: var(--surface-hover); }
+.code-problem:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.code-problem-icon { width: 14px; height: 14px; flex-shrink: 0; transform: translateY(2px); }
+.code-problem.is-error .code-problem-icon { color: var(--danger); }
+.code-problem.is-warning .code-problem-icon { color: var(--warning); }
+.code-problem.is-info .code-problem-icon { color: var(--accent); }
+.code-problem-pos { color: var(--faint); font-size: var(--fs-xs); min-width: 4.5ch; flex-shrink: 0; }
+.code-problem-msg { min-width: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.code-problem.is-open { background: var(--surface); }
+.code-problem.is-open .code-problem-msg { white-space: normal; }

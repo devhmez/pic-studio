@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "title": "Atelier — Démultiplexeur 1 vers 4",
+  "description": "Deux interrupteurs L1 L0 (RA1, RA0) choisissent laquelle des quatre LEDs D0 à D3 (RB0 à RB3) est allumée, selon la table de vérité de l’énoncé.",
+  "clockHz": 1000000,
+  "style": {
+    "bitNotation": "pin",
+    "tris": { "A": "auto", "B": "auto" },
+    "macros": false,
+    "sections": "demux",
+    "compactAssign": true,
+    "echoRegister": true,
+    "oneLineBranches": false,
+    "packLines": false
+  },
+  "signals": [
+    {
+      "id": "l0",
+      "name": "L0",
+      "pin": "RA0",
+      "dir": "in",
+      "label": "Interrupteur L0",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS1"
+    },
+    {
+      "id": "l1",
+      "name": "L1",
+      "pin": "RA1",
+      "dir": "in",
+      "label": "Interrupteur L1",
+      "activeLevel": 1,
+      "device": "logicstate",
+      "componentId": "LS2"
+    },
+    {
+      "id": "d0",
+      "name": "D0",
+      "pin": "RB0",
+      "dir": "out",
+      "label": "Led D0",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D1"
+    },
+    {
+      "id": "d1",
+      "name": "D1",
+      "pin": "RB1",
+      "dir": "out",
+      "label": "Led D1",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D2"
+    },
+    {
+      "id": "d2",
+      "name": "D2",
+      "pin": "RB2",
+      "dir": "out",
+      "label": "Led D2",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D3"
+    },
+    {
+      "id": "d3",
+      "name": "D3",
+      "pin": "RB3",
+      "dir": "out",
+      "label": "Led D3",
+      "activeLevel": 1,
+      "device": "led",
+      "componentId": "D4"
+    }
+  ],
+  "buses": [],
+  "constants": [],
+  "variables": [],
+  "init": [
+    { "id": "s1", "kind": "set", "signal": "d0", "value": 0 },
+    { "id": "s2", "kind": "set", "signal": "d1", "value": 0 },
+    { "id": "s3", "kind": "set", "signal": "d2", "value": 0 },
+    { "id": "s4", "kind": "set", "signal": "d3", "value": 0 }
+  ],
+  "loop": [
+    {
+      "id": "s5",
+      "kind": "if",
+      "branches": [
+        {
+          "id": "b1",
+          "cond": {
+            "kind": "and",
+            "items": [
+              { "kind": "pin", "signal": "l1", "value": 0 },
+              { "kind": "pin", "signal": "l0", "value": 0 }
+            ]
+          },
+          "body": [
+            { "id": "s6", "kind": "set", "signal": "d0", "value": 1 },
+            { "id": "s7", "kind": "set", "signal": "d1", "value": 0 },
+            { "id": "s8", "kind": "set", "signal": "d2", "value": 0 },
+            { "id": "s9", "kind": "set", "signal": "d3", "value": 0 }
+          ]
+        },
+        {
+          "id": "b2",
+          "cond": {
+            "kind": "and",
+            "items": [
+              { "kind": "pin", "signal": "l1", "value": 0 },
+              { "kind": "pin", "signal": "l0", "value": 1 }
+            ]
+          },
+          "body": [
+            { "id": "s10", "kind": "set", "signal": "d0", "value": 0 },
+            { "id": "s11", "kind": "set", "signal": "d1", "value": 1 },
+            { "id": "s12", "kind": "set", "signal": "d2", "value": 0 },
+            { "id": "s13", "kind": "set", "signal": "d3", "value": 0 }
+          ]
+        },
+        {
+          "id": "b3",
+          "cond": {
+            "kind": "and",
+            "items": [
+              { "kind": "pin", "signal": "l1", "value": 1 },
+              { "kind": "pin", "signal": "l0", "value": 0 }
+            ]
+          },
+          "body": [
+            { "id": "s14", "kind": "set", "signal": "d0", "value": 0 },
+            { "id": "s15", "kind": "set", "signal": "d1", "value": 0 },
+            { "id": "s16", "kind": "set", "signal": "d2", "value": 1 },
+            { "id": "s17", "kind": "set", "signal": "d3", "value": 0 }
+          ]
+        }
+      ],
+      "otherwise": {
+        "id": "b4",
+        "body": [
+          { "id": "s18", "kind": "set", "signal": "d0", "value": 0 },
+          { "id": "s19", "kind": "set", "signal": "d1", "value": 0 },
+          { "id": "s20", "kind": "set", "signal": "d2", "value": 0 },
+          { "id": "s21", "kind": "set", "signal": "d3", "value": 1 }
+        ]
+      },
+      "lead": "Décodage de L1 L0"
+    }
+  ],
+  "functions": []
+}

@@ -1,0 +1,25 @@
+/* Mac app window (hidden title bar, traffic lights over the toolbar). Only active when host/install.ts has put
+   `is-electron` on <html>, so the browser version is unchanged. */
+
+/* The toolbar is the title bar: leave room for the traffic lights and let it move the window. */
+.is-electron .app-toolbar {
+  padding-left: 84px;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Everything you can click or type in stays clickable. */
+.is-electron .app-toolbar :is(button, input, select, textarea, a, label, [role='button'], [role='dialog'], .popover, .tool-select) {
+  -webkit-app-region: no-drag;
+}
+.is-electron .app-toolbar .project-name-input { -webkit-user-select: text; user-select: text; }
+
+/* Overlays drawn over the toolbar must receive their own clicks (not move the window). */
+.is-electron :is(.modal-backdrop, .org-pop, .toasts) { -webkit-app-region: no-drag; }
+
+/* Full screen: macOS hides the traffic lights. */
+.is-electron.is-fullscreen .app-toolbar { padding-left: var(--space-3); }
+
+/* The toolbar's "PIC Studio" name doubles as the window title: no text cursor on it. */
+.is-electron .app-toolbar .brand { cursor: default; }
