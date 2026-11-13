@@ -4,6 +4,8 @@
 
 A desktop studio for the PIC16F84A: draw a circuit, write MikroC-style C, and watch the compiled program run on a cycle-accurate emulator wired to the schematic, with the generated assembly, registers and flowchart side by side.
 
+![PIC Studio: schematic, C code, assembly and flowchart panels](docs/screenshot.jpg)
+
 ## What it does
 
 PIC Studio is a single-window Electron app (it also runs in a browser) with four linked panels:
